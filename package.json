@@ -1,0 +1,15 @@
+{
+  "name": "uniform",
+  "version": "1.0.0",
+  "description": "Uniform is portable styles for VNN",
+  "scripts": {
+    "postinstall": "bower install",
+    "build": "node_modules/.bin/gulp build",
+    "dev": "node_modules/.bin/gulp dev"
+  },
+  "devDependencies": {
+    "del": "^0.1.3",
+    "gulp": "^3.8.10",
+    "gulp-sass": "^1.1.0"
+  }
+}
