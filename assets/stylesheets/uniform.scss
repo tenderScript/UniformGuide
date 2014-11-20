@@ -1,9 +1,5 @@
-@import "uniform/variables";
-
-@import "bourbon";
-@import "bootstrap";
-
-
-@import "uniform/base";
-@import "uniform/fonts";
-@import "uniform/forms";
+/**
+ * Build file for uniform. Use _uniform.scss
+ * if leveraging via a build process
+ */
+@import "uniform";
