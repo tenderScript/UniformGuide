@@ -9,8 +9,10 @@ var srcDir = "assets",
       return paths.concat([srcDir + '/**/*.' + ext, srcDir + '/*.' + ext]);
     }, []),
     sassConfig = {
-      includePaths: bourbon.includePaths
-    };
+      includePaths: [
+        'bower_components/bootstrap-sass-official/assets/stylesheets/'
+      ].concat(bourbon.includePaths)
+   };
 
 gulp.task('clean', function(cb) {
   del([distDir], cb);
