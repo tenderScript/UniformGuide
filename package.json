@@ -5,11 +5,15 @@
   "scripts": {
     "postinstall": "bower install",
     "build": "node_modules/.bin/gulp build",
-    "dev": "node_modules/.bin/gulp dev"
+    "dev": "node_modules/.bin/gulp dev",
+    "server": "php -S localhost:8000"
   },
   "devDependencies": {
     "del": "^0.1.3",
     "gulp": "^3.8.10",
     "gulp-sass": "^1.1.0"
+  },
+  "dependencies": {
+    "node-bourbon": "^1.2.3"
   }
 }

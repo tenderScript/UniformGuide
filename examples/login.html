@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Varsity News Network</title>
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/examples/demo.css" />
+    <link href="/dist/uniform.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-5 center-block form-container">
+
+            <h3 class="text-center form-heading">Sign In</h3>
+
+            <form class="form" action="/authorize?client_id=AlertApp&amp;response_type=code" method="post" role="form">
+                <div class="error alert alert-danger">
+                    Invalid user credentials
+                </div>
+                <div class="form-group form-group-split form-group-labels clearfix">
+                    <label for="user_email">Enter Your Email</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" value="" name="user[email]" id="user_email" type="email" placeholder="Enter Your Email" />
+                </div>
+                <div class="form-group form-group-split form-group-labels clearfix">
+                    <label for="user_password">Enter Your Password</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="user[password]" id="user_password" type="password" placeholder="Enter Your Password" />
+                    <p class="text-right">
+                        <a href="/forgot-password?client_id=AlertApp&amp;response_type=code">Forgot your password?</a>
+                    </p>
+                </div>
+                <input class="btn btn-block btn-danger center-block" type="submit" value="Sign In" />
+                <p class="text-center form-info">
+                    Don't have an account? <a href="/signup?client_id=AlertApp&amp;response_type=code">SIGN UP</a>
+                </p>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 center-block">
+            <p class="text-center form-notice">
+                By signing up, you agree to our <a href="http://varsitynewsnetwork.com/user-agreement/">Terms</a>
+                and <a href="http://varsitynewsnetwork.com/privacy-policy/">Privacy Policy</a>.
+            </p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+

@@ -1,0 +1,156 @@
+/* ===================== *
+ * App Colors
+ * ===================== */
+/* =====================
+ * Links
+ * ===================== */
+/* ===================== *
+ * Typography
+ * ===================== */
+/* ===================== *
+ * Form Vars
+ * ===================== */
+a {
+  color: #3498db;
+  text-decoration: none; }
+  a:visited {
+    color: #a199a2; }
+  a:hover {
+    color: #3498db;
+    text-decoration: underline; }
+  a:active {
+    font-weight: bold; }
+
+body {
+  color: #2c3e50;
+  font: "Roboto", Helvetica, Arial, sans-serif; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Homestead", "Times New Roman", serif; }
+
+@font-face {
+  font-family: 'Homestead';
+  src: url('fonts/Homestead-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto Light';
+  src: url('fonts/Roboto-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal; }
+
+input::-webkit-input-placeholder {
+  color: #a199a2 !important; }
+input::-moz-placeholder {
+  color: #a199a2 !important; }
+input:-moz-placeholder {
+  color: #a199a2 !important; }
+input:-ms-input-placeholder {
+  color: #a199a2 !important; }
+
+input:focus {
+  border-color: #b5bfcc; }
+
+.form-heading {
+  font-size: 24px;
+  line-height: 2.2em;
+  margin: 0; }
+
+.form-control {
+  border: 1px solid #ecf1f2;
+  border-radius: 2px;
+  height: 45px;
+  box-shadow: none; }
+
+/* ====================
+ * Form Container
+ *
+ * A form container provides a layout for small
+ * width constrained forms.
+ *
+ * See /examples/login.html or /examples/sinup.html
+ *
+ * ==================== */
+.form-container {
+  border-top: 8px solid #2c3e50;
+  background-color: #fff;
+  font-family: "Roboto Light", Helvetia, Arial, sans-serif;
+  margin-bottom: 12px;
+  margin-top: 30px;
+  max-width: 463px !important;
+  outline: 1px solid #2c3e50;
+  padding: 0 10px; }
+  .form-container .form-info {
+    margin-bottom: 0; }
+  .form-container .form-notice {
+    font-size: 1.2em;
+    margin: 12px !important; }
+  .form-container .form {
+    border-top: 1px solid #b5bfcc;
+    padding: 15px 60px; }
+  .form-container .btn-block {
+    margin-bottom: 14px !important;
+    padding: 12px 0;
+    text-transform: uppercase; }
+  .form-container .error {
+    margin-bottom: 15px !important; }
+  .form-container .form-heading {
+    border-bottom: 1px solid #b5bfcc; }
+
+/* ====================
+ * Form Group
+ *
+ * A form group is the main grouping element
+ * for grouping inputs and labels. It is mainly used for
+ * providing labels for non placeholder friendly forms
+ * and providing side-by-side inputs.
+ *
+ * See /examples/login.html or /examples/sinup.html
+ *
+ * ==================== */
+.form-group.form-group-labels {
+  color: #a199a2;
+  display: none;
+  margin-bottom: 0 !important; }
+  .form-group.form-group-labels.form-group-split label {
+    float: left;
+    width: 48%; }
+  .form-group.form-group-labels.form-group-split label:first-child {
+    margin-right: 4%; }
+.form-group.form-group-split input {
+  float: left;
+  width: 48%; }
+.form-group.form-group-split input:first-child {
+  margin-right: 4%; }
+
+/**
+ * Display form group labels for browsers older than
+ * IE 10
+ */
+.ie-lt10 .form-group.form-group-labels {
+  display: block; }
+
+.form-notice {
+  color: #fff;
+  font-size: 90%;
+  font-weight: normal; }
+  .form-notice a {
+    color: #fff;
+    text-decoration: underline; }
+
+@media only screen and (max-width: 360px) {
+  .form-container form {
+    padding: 15px 30px; } }

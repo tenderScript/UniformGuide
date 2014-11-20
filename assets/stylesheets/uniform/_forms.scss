@@ -1,0 +1,135 @@
+input {
+  @include placeholder {
+    color: $placeholder-color !important;
+  }
+}
+
+input:focus {
+  border-color: $app-ribbon-color;
+}
+
+.form-heading {
+  font-size: $form-heading-size;
+  line-height: $form-heading-line-height;
+  margin:0;
+}
+
+.form-control {
+  border:1px solid $app-background-color;
+  border-radius: $form-control-radius;
+  height: $form-control-height;
+  box-shadow: none
+}
+
+/* ====================
+ * Form Container
+ *
+ * A form container provides a layout for small
+ * width constrained forms.
+ *
+ * See /examples/login.html or /examples/sinup.html
+ *
+ * ==================== */
+.form-container {
+  border-top: 8px solid $app-copy-color;
+  background-color: $form-container-bg;
+  font-family: $subheading-font;
+  margin-bottom: 12px;
+  margin-top:30px;
+  max-width: 463px !important;
+  outline: 1px solid $app-copy-color;
+  padding: 0 10px;
+
+
+  .form-info {
+    margin-bottom:0;
+  }
+
+  .form-notice {
+    font-size: 1.2em;
+    margin: 12px !important;
+  }
+
+  .form {
+    border-top: 1px solid $app-ribbon-color;
+    padding: 15px 60px;
+  }
+
+  .btn-block {
+    margin-bottom: 14px !important;
+    padding:12px 0;
+    text-transform: uppercase;
+  }
+
+  .error {
+    margin-bottom: 15px !important;
+  }
+
+  .form-heading {
+    border-bottom: 1px solid $app-ribbon-color;
+  }
+}
+
+/* ====================
+ * Form Group
+ *
+ * A form group is the main grouping element
+ * for grouping inputs and labels. It is mainly used for
+ * providing labels for non placeholder friendly forms
+ * and providing side-by-side inputs.
+ *
+ * See /examples/login.html or /examples/sinup.html
+ *
+ * ==================== */
+.form-group {
+  &.form-group-labels {
+    color: $placeholder-color;
+    display: none;
+    margin-bottom:0 !important;
+
+    &.form-group-split label {
+      float:left;
+      width:48%;
+    }
+
+    &.form-group-split label:first-child {
+      margin-right: 4%;
+    }
+  }
+
+  &.form-group-split input {
+    float:left;
+    width: 48%;
+  }
+
+  &.form-group-split input:first-child {
+    margin-right: 4%;
+  }
+}
+/**
+ * Display form group labels for browsers older than
+ * IE 10
+ */
+.ie-lt10 .form-group.form-group-labels {
+  display: block;
+}
+
+.form-notice {
+  color: #fff;
+  font-size: 90%;
+  font-weight: normal;
+
+  a {
+    color:#fff;
+    text-decoration: underline;
+  }
+}
+
+@media only screen
+and (max-width : 360px) {
+
+  .form-container form {
+    padding:15px 30px;
+  }
+
+}
