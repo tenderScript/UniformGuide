@@ -1,7 +1,9 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     bourbon = require('node-bourbon'),
-    del = require('del');
+    del = require('del'),
+    minifyCss = require('gulp-minify-css'),
+    rename = require('gulp-rename');
 
 var srcDir = "assets",
     distDir = "dist",
@@ -22,6 +24,9 @@ gulp.task('sass', ['clean'], function() {
   gulp.src([srcDir + '/stylesheets/uniform.scss'])
       .pipe(sass(sassConfig))
       .pipe(gulp.dest(distDir))
+      .pipe(rename({suffix:'.min'}))
+      .pipe(minifyCss())
+      .pipe(gulp.dest(distDir));
 });
 
 gulp.task('copy-fonts', ['clean'], function() {
@@ -33,6 +38,7 @@ gulp.task('dev', ['build'], function() {
   gulp.watch(watchPaths, ['build']);
 });
 
+
 gulp.task('copy', ['copy-fonts']);
-gulp.task('build', ['sass', 'copy']);
+gulp.task('build', ['clean', 'sass', 'copy']);
 gulp.task('default', ['build']);

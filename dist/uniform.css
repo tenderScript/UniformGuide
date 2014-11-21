@@ -4789,6 +4789,8 @@ input:focus {
 .form-group.form-group-split input {
   float: left;
   width: 48%; }
+.form-group .text-danger {
+  margin-bottom: 0; }
 .form-group.form-group-split input:first-child {
   margin-right: 4%; }
 
