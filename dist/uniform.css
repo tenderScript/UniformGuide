@@ -4680,7 +4680,8 @@ a {
 
 body {
   color: #2c3e50;
-  font: "Roboto", Helvetica, Arial, sans-serif; }
+  font: "Roboto", Helvetica, Arial, sans-serif;
+  font-size: 14px; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Homestead", "Times New Roman", serif; }
