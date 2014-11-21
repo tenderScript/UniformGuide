@@ -4676,7 +4676,7 @@ a {
     color: #3498db;
     text-decoration: underline; }
   a:active {
-    font-weight: bold; }
+    color: #2980b9; }
 
 body {
   color: #2c3e50;
