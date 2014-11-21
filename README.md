@@ -3,7 +3,7 @@ uniform
 
 The goal of uniform is to provide one place for common UI elements and styles.
 
-Uniform is build on top of the following:
+Uniform is built on top of the following:
 
 * bootstrap
 * sass
