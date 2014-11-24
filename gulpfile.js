@@ -1,6 +1,5 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
-    bourbon = require('node-bourbon'),
     del = require('del'),
     minifyCss = require('gulp-minify-css'),
     rename = require('gulp-rename');
@@ -13,7 +12,7 @@ var srcDir = "assets",
     sassConfig = {
       includePaths: [
         'bower_components/bootstrap-sass-official/assets/stylesheets/'
-      ].concat(bourbon.includePaths)
+      ]
    };
 
 gulp.task('clean', function(cb) {
