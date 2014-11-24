@@ -206,6 +206,12 @@
     }
   }
 
+  &.vnn-icon-info {
+    &:before {
+      content: '6';
+    }
+  }
+
   &.vnn-icon-wait {
     &:before {
       content: 'm';
