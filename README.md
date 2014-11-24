@@ -7,12 +7,11 @@ Uniform is built on top of the following:
 
 * bootstrap
 * sass
-* bourbon
 
 ##Usage
 
 The fully compiled css for uniform can be found at `dist/uniform.css`. It includes the full bootstrap
-library, as well as [bourbon](http://bourbon.io/).
+library.
 
 The `dist` directory will also contain a `fonts` directory containing bootstrap fonts and VNN standard fonts.
 
