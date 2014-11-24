@@ -4930,6 +4930,8 @@ input:focus {
   content: 'h'; }
 .vnn-icon-slim.vnn-icon-hourglass:before {
   content: 'i'; }
+.vnn-icon-slim.vnn-icon-info:before {
+  content: '6'; }
 .vnn-icon-slim.vnn-icon-wait:before {
   content: 'm'; }
 .vnn-icon-slim.vnn-icon-chevron-down:before {
