@@ -14,8 +14,5 @@
     "gulp-minify-css": "^0.3.11",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^1.1.0"
-  },
-  "dependencies": {
-    "node-bourbon": "^1.2.3"
   }
 }
