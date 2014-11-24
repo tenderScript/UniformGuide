@@ -4710,6 +4710,14 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   font-style: normal; }
 
+@font-face {
+  font-family: 'Vnn-Icons';
+  src: url('fonts/vnn-icons.ttf') format('truetype'); }
+
+@font-face {
+  font-family: 'Vnn-Slim';
+  src: url('fonts/vnn-slim.ttf') format('truetype'); }
+
 input::-webkit-input-placeholder {
   color: #a199a2; }
 input:-moz-placeholder {
@@ -4816,3 +4824,131 @@ input:focus {
 @media only screen and (max-width: 360px) {
   .form-container form {
     padding: 15px 30px; } }
+
+.vnn-icon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Vnn-Icons';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  .vnn-icon.vnn-icon-slim {
+    font-family: 'Vnn-Slim'; }
+
+.vnn-icon-large {
+  font-size: 180% !important; }
+
+.vnn-icon-plus:before {
+  content: 'a'; }
+
+.vnn-icon-contact:before {
+  content: 'p'; }
+
+.vnn-icon-baseball:before {
+  content: 'A'; }
+
+.vnn-icon-basketball:before {
+  content: 'B'; }
+
+.vnn-icon-bowling:before {
+  content: 'C'; }
+
+.vnn-icon-competitive-cheer:before, .vnn-icon-sideline-cheer:before {
+  content: 'D'; }
+
+.vnn-icon-crew:before {
+  content: 'E'; }
+
+.vnn-icon-cross-country:before {
+  content: 'F'; }
+
+.vnn-icon-dance:before {
+  content: 'G'; }
+
+.vnn-icon-equestrian:before {
+  content: 'H'; }
+
+.vnn-icon-field-hockey:before {
+  content: 'I'; }
+
+.vnn-icon-skating:before {
+  content: 'J'; }
+
+.vnn-icon-football:before {
+  content: 'K'; }
+
+.vnn-icon-golf:before {
+  content: 'L'; }
+
+.vnn-icon-gymnastics:before {
+  content: 'M'; }
+
+.vnn-icon-hockey:before {
+  content: 'N'; }
+
+.vnn-icon-lacrosse:before {
+  content: 'O'; }
+
+.vnn-icon-rugby:before {
+  content: 'P'; }
+
+.vnn-icon-skiing:before, .vnn-icon-nordic-skiing:before {
+  content: 'Q'; }
+
+.vnn-icon-soccer:before {
+  content: 'R'; }
+
+.vnn-icon-softball:before {
+  content: 'S'; }
+
+.vnn-icon-swimming:before {
+  content: 'T'; }
+
+.vnn-icon-tennis:before {
+  content: 'U'; }
+
+.vnn-icon-track:before, .vnn-icon-indoor-track:before {
+  content: 'V'; }
+
+.vnn-icon-volleyball:before {
+  content: 'W'; }
+
+.vnn-icon-water-polo:before {
+  content: 'X'; }
+
+.vnn-icon-wrestling:before {
+  content: 'Y'; }
+
+.vnn-icon-slim.vnn-icon-plus:before {
+  content: 'a'; }
+.vnn-icon-slim.vnn-icon-clock:before {
+  content: 'b'; }
+.vnn-icon-slim.vnn-icon-contact:before {
+  content: 'h'; }
+.vnn-icon-slim.vnn-icon-hourglass:before {
+  content: 'i'; }
+.vnn-icon-slim.vnn-icon-wait:before {
+  content: 'm'; }
+.vnn-icon-slim.vnn-icon-chevron-down:before {
+  content: 'n'; }
+.vnn-icon-slim.vnn-icon-edit-box:before {
+  content: 'p'; }
+.vnn-icon-slim.vnn-icon-paperclip:before {
+  content: 'R'; }
+.vnn-icon-slim.vnn-icon-right-arrow-circle:before {
+  content: 'v'; }
+.vnn-icon-slim.vnn-icon-menu:before {
+  content: 'I'; }
+.vnn-icon-slim.vnn-icon-slim-close-white {
+  cursor: pointer; }
+  .vnn-icon-slim.vnn-icon-slim-close-white:before {
+    content: 'Y'; }
+  .vnn-icon-slim.vnn-icon-slim-close-white:hover:before {
+    content: 'N'; }
+  .vnn-icon-slim.vnn-icon-slim-close-white.disabled {
+    color: #a7a7a7; }
+    .vnn-icon-slim.vnn-icon-slim-close-white.disabled:hover:before {
+      content: 'Y'; }
