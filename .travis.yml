@@ -4,12 +4,6 @@ node_js:
   - "0.11"
   - "0.10"
 
-install:
-  - npm install
-
-before_script:
-  - npm run build
-
 script:
   - npm run test-single-run
 

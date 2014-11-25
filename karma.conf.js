@@ -6,7 +6,8 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-*/angular-*.js',
       'bower_components/cookies-js/src/*.js',
-      'assets/js/directives/logout-button/*.js'
+      'assets/js/directives/logout-button/*_test.js',
+      'dist/uniform.js'
     ],
     autoWatch: true,
     browsers: ['PhantomJS'],

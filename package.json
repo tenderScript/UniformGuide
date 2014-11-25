@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Uniform is portable styles for VNN",
   "scripts": {
+    "pretest": "npm run build",
+    "pretest-single-run": "npm run build",
     "test": "node_modules/karma/bin/karma start karma.conf.js",
     "test-single-run":" node_modules/karma/bin/karma start karma.conf.js --single-run",
     "postinstall": "node_modules/.bin/bower install",
