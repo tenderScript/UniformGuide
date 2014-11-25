@@ -4764,6 +4764,7 @@ input:focus {
   .form-container .form-info {
     margin-bottom: 0; }
   .form-container .form-notice {
+    color: #2c3e50;
     font-size: 1.2em;
     margin: 12px !important; }
   .form-container .form {
