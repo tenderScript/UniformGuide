@@ -31,7 +31,17 @@ gulp.task('sass', ['clean'], function() {
 });
 
 gulp.task('js', ['clean'], function() {
-  gulp.src([srcDir + '/js/directives/uniform.js', srcDir + '/js/**/*.js', "!" + srcDir + '/js/**/*_test.js'])
+
+  var deps = [
+    'bower_components/cookies-js/src/cookies.js'
+  ];
+  var src = [
+    srcDir + '/js/directives/uniform.js',
+    srcDir + '/js/**/*.js',
+    "!" + srcDir + '/js/**/*_test.js'
+  ];
+
+  gulp.src(deps.concat(src))
       .pipe(concat('uniform.js'))
       .pipe(gulp.dest(distDir))
       .pipe(rename({suffix:'.min'}))
