@@ -53,8 +53,8 @@ describe('logoutButton', function() {
     });
 
     describe('.cookieDomain', function() {
-      it('should be .getvnn.com', function() {
-        expect(this.elem.isolateScope().cookieDomain).toBe('.getvnn.com');
+      it('should be *', function() {
+        expect(this.elem.isolateScope().cookieDomain).toBe('*');
       });
     });
 
@@ -73,7 +73,14 @@ describe('logoutButton', function() {
     it('should delete the cookies', function() {
       spyOn(Cookies, 'expire');
       angular.element(this.elem[0]).triggerHandler('click');
-      expect(Cookies.expire).toHaveBeenCalledWith('access_token', {domain:'.getvnn.com'});
+      expect(Cookies.expire).toHaveBeenCalledWith('access_token');
+    });
+
+    it('should delete the cookies for a given domain', function() {
+      var elem = this.$compile('<div logout-button cookie-domain=".getvnn.com" />')(this.$scope);
+      spyOn(Cookies, 'expire');
+      angular.element(elem[0]).triggerHandler('click');
+      expect(Cookies.expire).toHaveBeenCalledWith('access_token',{domain:'.getvnn.com'});
     });
 
     it('should fire the scope action', function() {
