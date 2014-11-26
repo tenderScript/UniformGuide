@@ -20,7 +20,7 @@
         args = [this.$scope.cookie],
         redirect = (function(path) {
           return function() {
-            that.$window.location = $path;
+            that.$window.location = path;
           };
         })(this.$scope.redirect);
     this.$scope.cookieDomain != '*' && (args = args.concat([{domain: this.$scope.cookieDomain}]));
