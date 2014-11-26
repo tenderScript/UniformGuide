@@ -236,6 +236,24 @@
     }
   }
 
+  &.vnn-icon-left-arrow {
+    &:before {
+      content: 's'
+    }
+  }
+
+  &.vnn-icon-right-arrow {
+    &:before {
+      content: 't'
+    }
+  }
+
+  &.vnn-icon-left-arrow-circle {
+    &:before {
+      content: 'u';
+    }
+  }
+
   &.vnn-icon-right-arrow-circle {
     &:before {
       content: 'v';
