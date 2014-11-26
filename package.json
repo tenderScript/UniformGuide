@@ -5,8 +5,8 @@
   "scripts": {
     "pretest": "npm run build",
     "pretest-single-run": "npm run build",
-    "test": "node_modules/karma/bin/karma start karma.conf.js",
-    "test-single-run":" node_modules/karma/bin/karma start karma.conf.js --single-run",
+    "test": "node_modules/karma/bin/karma start karma.conf.js --single-run",
+    "test-dev": "TEST=1 node_modules/karma/bin/karma start karma.conf.js",
     "postinstall": "node_modules/.bin/bower install",
     "build": "node_modules/.bin/gulp build",
     "dev": "node_modules/.bin/gulp dev",
