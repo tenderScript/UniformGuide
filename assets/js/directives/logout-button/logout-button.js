@@ -15,7 +15,8 @@
 
   LogoutButtonController.prototype.onClick = function() {
     var that = this;
-    return function() {
+    return function(e) {
+      e.preventDefault();
       Cookies.expire(that.$scope.cookie, {domain: that.$scope.cookieDomain});
       that.$q.when(that.$scope.action()).then(function(){
         that.$location.url(that.$scope.redirect);
