@@ -1,10 +1,10 @@
 (function() {
 
-  LogoutButtonController.$inject = ['$q', '$location'];
+  LogoutButtonController.$inject = ['$q', '$window'];
 
-  function LogoutButtonController($q, $location) {
+  function LogoutButtonController($q, $window) {
     this.$q = $q;
-    this.$location = $location;
+    this.$window = $window;
   }
 
   LogoutButtonController.prototype.setScope = function($scope) {
@@ -17,14 +17,18 @@
 
   LogoutButtonController.prototype.onClick = function() {
     var that = this,
-        args = [this.$scope.cookie];
+        args = [this.$scope.cookie],
+        redirect = (function(path) {
+          return function() {
+            that.$window.location = $path;
+          };
+        })(this.$scope.redirect);
     this.$scope.cookieDomain != '*' && (args = args.concat([{domain: this.$scope.cookieDomain}]));
+
     return function(e) {
       e.preventDefault();
       Cookies.expire.apply(null, args);
-      that.$q.when(that.$scope.action()).then(function(){
-        that.$location.url(that.$scope.redirect);
-      });
+      that.$q.when(that.$scope.action()).then(redirect);
     }
   };
 
