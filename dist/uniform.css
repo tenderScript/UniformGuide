@@ -4941,6 +4941,12 @@ input:focus {
   content: 'p'; }
 .vnn-icon-slim.vnn-icon-paperclip:before {
   content: 'R'; }
+.vnn-icon-slim.vnn-icon-left-arrow:before {
+  content: 's'; }
+.vnn-icon-slim.vnn-icon-right-arrow:before {
+  content: 't'; }
+.vnn-icon-slim.vnn-icon-left-arrow-circle:before {
+  content: 'u'; }
 .vnn-icon-slim.vnn-icon-right-arrow-circle:before {
   content: 'v'; }
 .vnn-icon-slim.vnn-icon-menu:before {
