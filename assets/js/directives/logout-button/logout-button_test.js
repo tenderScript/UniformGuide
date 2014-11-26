@@ -88,12 +88,5 @@ describe('logoutButton', function() {
       angular.element(this.elem[0]).triggerHandler('click');
       expect(this.elem.isolateScope().action).toHaveBeenCalled();
     });
-
-    it('should redirect to the stored redirect value', inject(function($location) {
-      spyOn($location, 'url');
-      angular.element(this.elem[0]).triggerHandler('click');
-      this.$rootScope.$apply();
-      expect($location.url).toHaveBeenCalledWith('/');
-    }));
   });
 });
