@@ -20,6 +20,10 @@ input:focus {
   border-color: $app-ribbon-color;
 }
 
+input:disabled, text:disabled, select:disabled {
+  color: $placeholder-color;
+}
+
 .form-heading {
   font-size: $form-heading-size;
   line-height: $form-heading-line-height;
