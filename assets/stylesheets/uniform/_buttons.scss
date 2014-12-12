@@ -1,3 +1,8 @@
 .btn-primary:visited {
   color: $btn-primary-color;
 }
+
+.btn-lg {
+  // overwrite bootstrap large button style to use font-size-base
+  @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-base, $line-height-large, $border-radius-large);
+}
