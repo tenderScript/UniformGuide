@@ -194,6 +194,36 @@
     }
   }
 
+  &.vnn-icon-minus {
+    &:before {
+      content: 'c';
+    }
+  }
+
+  &.vnn-icon-refresh {
+    &:before {
+      content: 'd';
+    }
+  }
+
+  &.vnn-icon-pencil-circle {
+    &:before {
+      content: 'e';
+    }
+  }
+
+  &.vnn-icon-search {
+    &:before {
+      content: 'f';
+    }
+  }
+
+  &.vnn-icon-keyhole {
+    &:before {
+      content: 'g';
+    }
+  }
+
   &.vnn-icon-contact {
     &:before {
       content: 'h';
@@ -206,9 +236,21 @@
     }
   }
 
-  &.vnn-icon-info {
+  &.vnn-icon-home {
     &:before {
-      content: '6';
+      content: 'j';
+    }
+  }
+
+  &.vnn-icon-clock-thin {
+    &:before {
+      content: 'k';
+    }
+  }
+
+  &.vnn-icon-football {
+    &:before {
+      content: 'l';
     }
   }
 
@@ -224,9 +266,27 @@
     }
   }
 
+  &.vnn-icon-chevron-up {
+    &:before {
+      content: 'o';
+    }
+  }
+
   &.vnn-icon-edit-box {
     &:before {
       content: 'p';
+    }
+  }
+
+  &.vnn-icon-link {
+    &:before {
+      content: 'q';
+    }
+  }
+
+  &.vnn-icon-lock {
+    &:before {
+      content: 'r';
     }
   }
 
@@ -260,9 +320,207 @@
     }
   }
 
+  &.vnn-icon-add-circle {
+    &:before {
+      content: 'w';
+    }
+  }
+
+  &.vnn-icon-email {
+    &:before {
+      content: 'x';
+    }
+  }
+
+  &.vnn-icon-map-marker {
+    &:before {
+      content: 'y';
+    }
+  }
+
+  &.vnn-icon-comment {
+    &:before {
+      content: 'z';
+    }
+  }
+
+  &.vnn-icon-video {
+    &:before {
+      content: 'A';
+    }
+  }
+
+  &.vnn-icon-feed {
+    &:before {
+      content: 'C';
+    }
+  }
+
+  &.vnn-icon-sync {
+    &:before {
+      content: 'D';
+    }
+  }
+
+  &.vnn-icon-phone {
+    &:before {
+      content: 'J';
+    }
+  }
+
+  &.vnn-icon-phone-filled {
+    &:before {
+      content: 'K';
+    }
+  }
+
+  &.vnn-icon-video-filled {
+    &:before {
+      content: 'F';
+    }
+  }
+
+  &.vnn-icon-new {
+    &:before {
+      content: 'G';
+    }
+  }
+
   &.vnn-icon-menu {
     &:before {
       content: 'I';
+    }
+  }
+
+  &.vnn-icon-email-filled {
+    &:before {
+      content: 'L';
+    }
+  }
+
+  &.vnn-icon-add-circle-filled {
+    &:before {
+      content: 'M';
+    }
+  }
+
+  &.vnn-icon-close-circle-filled {
+    &:before {
+      content: 'N';
+    }
+  }
+
+  &.vnn-icon-close {
+    &:before {
+      content: 'O';
+    }
+  }
+
+  &.vnn-icon-trash {
+    &:before {
+      content: 'Q';
+    }
+  }
+
+  &.vnn-icon-x-men {
+    &:before {
+      content: 'S';
+    }
+  }
+
+  &.vnn-icon-football-helmet {
+    &:before {
+      content: 'T';
+    }
+  }
+
+  &.vnn-icon-dude-circle {
+    &:before {
+      content: 'V';
+    }
+  }
+
+  &.vnn-icon-camera {
+    &:before {
+      content: 'W';
+    }
+  }
+
+  &.vnn-icon-camera-circle {
+    &:before {
+      content: 'X';
+    }
+  }
+
+  &.vnn-icon-close-circle {
+    &:before {
+      content: 'Y';
+    }
+  }
+
+  &.vnn-icon-checked-box {
+    &:before {
+      content: 'Z';
+    }
+  }
+
+  &.vnn-icon-check-circle {
+    &:before {
+      content: '0';
+    }
+  }
+
+  &.vnn-icon-cog {
+    &:before {
+      content: '1';
+    }
+  }
+
+  &.vnn-icon-calendar {
+    &:before {
+      content: '2';
+    }
+  }
+
+  &.vnn-icon-full-clock {
+    &:before {
+      content: '3';
+    }
+  }
+
+  &.vnn-icon-stopwatch {
+    &:before {
+      content: '4';
+    }
+  }
+
+  &.vnn-icon-warning {
+    &:before {
+      content: '5';
+    }
+  }
+
+  &.vnn-icon-info {
+    &:before {
+      content: '6';
+    }
+  }
+
+  &.vnn-icon-question {
+    &:before {
+      content: '7';
+    }
+  }
+
+  &.vnn-icon-twins {
+    &:before {
+      content: '8';
+    }
+  }
+
+  &.vnn-icon-contact-add {
+    &:before {
+      content: '9';
     }
   }
 
@@ -287,4 +545,25 @@
     cursor: pointer;
   }
 
+
+  &.vnn-icon-add-white {
+    &:before {
+      content: 'w';
+    }
+
+    &:hover:before {
+      content: 'M';
+    }
+
+    &.disabled {
+      color:#a7a7a7;
+
+      &:hover:before {
+        content:'w';
+      }
+
+    }
+
+    cursor: pointer;
+  }
 }
