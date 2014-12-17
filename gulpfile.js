@@ -38,7 +38,7 @@ gulp.task('js', ['clean'], function() {
   var src = [
     srcDir + '/js/directives/uniform.js',
     srcDir + '/js/**/*.js',
-    "!" + srcDir + '/js/**/*_test.js'
+    "!" + srcDir + '/js/**/*-test.js'
   ];
 
   gulp.src(deps.concat(src))
