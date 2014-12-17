@@ -14,7 +14,7 @@ describe('logoutButton', function() {
 
   describe('construction', function() {
     beforeEach(function() {
-      this.elem = this.$compile('<div logout_button redirect="/" cookie="access_token" cookie-domain=".getvnn.com" action="doThing" />')(this.$scope);
+      this.elem = this.$compile('<div logout-button redirect="/" cookie="access_token" cookie-domain=".getvnn.com" action="doThing" />')(this.$scope);
     });
 
     it('should store a redirect uri on scope', function() {
@@ -37,7 +37,7 @@ describe('logoutButton', function() {
   describe('default values', function() {
 
     beforeEach(function() {
-      this.elem = this.$compile('<div logout_button />')(this.$rootScope.$new());
+      this.elem = this.$compile('<div logout-button />')(this.$rootScope.$new());
     });
 
     describe('.redirect', function() {
@@ -67,7 +67,7 @@ describe('logoutButton', function() {
 
   describe('when clicked', function() {
     beforeEach(function() {
-      this.elem = this.$compile('<div logout_button action="doThing" />')(this.$scope);
+      this.elem = this.$compile('<div logout-button action="doThing" />')(this.$scope);
     });
 
     it('should delete the cookies', function() {
@@ -77,7 +77,7 @@ describe('logoutButton', function() {
     });
 
     it('should delete the cookies for a given domain', function() {
-      var elem = this.$compile('<div logout_button cookie-domain=".getvnn.com" />')(this.$scope);
+      var elem = this.$compile('<div logout-button cookie-domain=".getvnn.com" />')(this.$scope);
       spyOn(Cookies, 'expire');
       angular.element(elem[0]).triggerHandler('click');
       expect(Cookies.expire).toHaveBeenCalledWith('access_token',{domain:'.getvnn.com'});
