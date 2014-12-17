@@ -194,6 +194,12 @@
     }
   }
 
+  &.vnn-icon-check {
+    &:before {
+      content: '{';
+    }
+  }
+
   &.vnn-icon-minus {
     &:before {
       content: 'c';
