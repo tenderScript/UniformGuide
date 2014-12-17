@@ -162,6 +162,87 @@
 
 (function() {
 
+  "use strict";
+
+  angular.module('uniform.flash-message', []);
+
+})();
+
+(function() {
+
+  "use strict";
+
+
+  FlashMessageController.$inject = ['$scope', 'FlashMessage'];
+
+  function FlashMessageController($scope, FlashMessage) {
+    $scope.message = FlashMessage;
+  }
+
+  var flashMessage = {
+    template: '{{message.text}}',
+    controller: FlashMessageController
+  };
+
+  angular.module('uniform.flash-message')
+     .directive('flashMessage', function() {
+       return flashMessage;
+     });
+})();
+
+(function() {
+
+  "use strict";
+
+  /**
+   * Create a new FlashMessage service. The object passed
+   * in will create shortcut the classes used in the message() method.
+   *
+   * @param classes
+   * @constructor
+   */
+  function FlashMessage(classes) {
+    var k;
+    var that = this;
+    for (k in classes) {
+      (function(method, cssClass) {
+        that[method] = function(text, data) {
+          this.message(cssClass, text, data);
+        };
+      })(k, classes[k]);
+    }
+  }
+
+  /**
+   * Store the internal message contents.
+   *
+   * @param cssClass
+   * @param text
+   * @param data
+   * @returns {{cssClass: *, text: *, data: *}|*}
+   */
+  FlashMessage.prototype.message = function(cssClass, text, data) {
+    this.cssClass = cssClass;
+    this.text = text;
+    this.data = data;
+  };
+
+  function FlashMessageProvider() {}
+  FlashMessageProvider.prototype.classes = function(obj) {
+    this.classes = obj;
+  };
+
+  FlashMessageProvider.prototype.$get = function() {
+    return new FlashMessage(this.classes);
+  };
+
+  angular.module('uniform.flash-message')
+     .provider('FlashMessage', FlashMessageProvider);
+
+})();
+
+(function() {
+
   LogoutButtonController.$inject = ['$q', '$window'];
 
   function LogoutButtonController($q, $window) {
