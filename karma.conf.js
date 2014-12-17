@@ -6,11 +6,11 @@ var env = {
   all: [
     'bower_components/angular/angular.js',
     'bower_components/angular-*/angular-*.js',
-    'assets/js/directives/logout-button/*_test.js'
+    'assets/js/directives/logout_button/*-test.js'
   ],
   test: [
     'bower_components/cookies-js/src/*.js',
-    'assets/js/directives/logout-button/*.js'
+    'assets/js/directives/logout_button/*.js'
   ],
   dist: [
     'dist/uniform.min.js'
