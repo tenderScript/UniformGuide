@@ -1,0 +1,51 @@
+.flash-message {
+  background-color:#fff;
+
+  border-bottom-style: solid;
+  border-bottom-color: #000;
+  border-bottom-width: 2px;
+
+  border-top-style: solid;
+  border-top-color: #000;
+  border-top-width: 2px;
+
+  font-size:14px;
+  padding: 20px;
+
+  .flash-message-close {
+    cursor: pointer;
+    float:right;
+    position:relative;
+    bottom: 15px;
+  }
+
+  .flash-message-action {
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    cursor: pointer;
+  }
+}
+
+.flash-message.flash-message-success {
+  background-color: $flash-success-background-color;
+  color: $flash-success-color;
+  border-color: $flash-success-color;
+}
+
+.flash-message.flash-message-error {
+   background-color: $flash-error-background-color;
+   color: $flash-error-color;
+   border-color: $flash-error-color;
+}
+
+.flash-message.flash-message-comment {
+  background-color: $flash-comment-background-color;
+  color: $flash-comment-color;
+  border-color: $flash-comment-color;
+}
+
+.flash-message.flash-message-info {
+  background-color: $flash-info-background-color;
+  color: $flash-info-color;
+  border-color: $flash-info-color;
+}
