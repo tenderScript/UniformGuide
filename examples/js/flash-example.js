@@ -30,10 +30,7 @@ angular.module('flash-example', ['uniform.flash-message', 'ngAnimate'])
      };
 
      $scope.update = function() {
-       FlashMessage[$scope.method]($scope.flashText, {
-         actionText: $scope.actionText,
-         boldText: $scope.boldText
-       });
+       FlashMessage.callout[$scope.method]($scope.boldText, $scope.flashText, $scope.actionText);
      };
 
      $scope.close = function() {
