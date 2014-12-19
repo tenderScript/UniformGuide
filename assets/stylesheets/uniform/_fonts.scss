@@ -33,5 +33,7 @@
 
 @font-face {
   font-family: 'Vnn-Slim';
-  src: url('fonts/vnn-slim.ttf') format('truetype');
+  src: url('fonts/vnn-slim.woff') format('woff'),
+       url('fonts/vnn-slim.ttf') format('truetype');
+
 }

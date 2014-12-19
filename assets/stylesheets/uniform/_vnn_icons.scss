@@ -530,6 +530,12 @@
     }
   }
 
+  &.vnn-icon-calendar-open {
+    &:before {
+      content: '_';
+    }
+  }
+
   &.vnn-icon-slim-close-white {
     &:before {
       content: 'Y';

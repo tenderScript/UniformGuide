@@ -4731,7 +4731,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @font-face {
   font-family: 'Vnn-Slim';
-  src: url('fonts/vnn-slim.ttf') format('truetype'); }
+  src: url('fonts/vnn-slim.woff') format('woff'), url('fonts/vnn-slim.ttf') format('truetype'); }
 
 input::-webkit-input-placeholder {
   color: #a199a2; }
@@ -5057,6 +5057,8 @@ input:disabled, text:disabled, select:disabled {
   content: '8'; }
 .vnn-icon-slim.vnn-icon-contact-add:before {
   content: '9'; }
+.vnn-icon-slim.vnn-icon-calendar-open:before {
+  content: '_'; }
 .vnn-icon-slim.vnn-icon-slim-close-white {
   cursor: pointer; }
   .vnn-icon-slim.vnn-icon-slim-close-white:before {

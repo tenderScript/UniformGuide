@@ -1,4 +1,4 @@
-angular.module('flash-example', ['uniform.flash-message'])
+angular.module('flash-example', ['uniform.flash-message', 'ngAnimate'])
   .config(function(FlashMessageProvider) {
      FlashMessageProvider.classes({
        success: 'success',
