@@ -10,8 +10,9 @@ describe('FlashMessage', function() {
     });
   }));
 
-  beforeEach(inject(function(FlashMessage) {
+  beforeEach(inject(function(FlashMessage, $timeout) {
     this.service = FlashMessage;
+    this.$timeout = $timeout;
   }));
 
   describe('.message()', function() {
@@ -50,6 +51,15 @@ describe('FlashMessage', function() {
     it('should set the hidden status', function() {
       this.service.hidden = false;
       this.service.hide();
+      expect(this.service.hidden).toBe(true);
+    });
+  });
+
+  describe('.timeout()', function() {
+    it('should set state to hidden after specified interval', function() {
+      this.service.hidden = false;
+      this.service.timeout(100);
+      this.$timeout.flush();
       expect(this.service.hidden).toBe(true);
     });
   });

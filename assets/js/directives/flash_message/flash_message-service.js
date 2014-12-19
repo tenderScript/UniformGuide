@@ -6,10 +6,11 @@
    * Create a new FlashMessage service. The object passed
    * in will create shortcut the classes used in the message() method.
    *
-   * @param classes
+   * @param array classes
+   * @param angular timeout service $timeout
    * @constructor
    */
-  function FlashMessage(classes) {
+  function FlashMessage(classes, $timeout) {
     classes || (classes = {});
     this.hidden = true;
     var k;
@@ -21,6 +22,7 @@
         };
       })(k, classes[k]);
     }
+    this.$timeout = $timeout;
   }
 
   /**
@@ -45,14 +47,19 @@
     this.hidden = true;
   };
 
+  FlashMessage.prototype.timeout = function(ms) {
+    this.$timeout(angular.bind(this, this.hide), ms);
+  };
+
   function FlashMessageProvider() {}
   FlashMessageProvider.prototype.classes = function(obj) {
     this.classes = obj;
   };
 
-  FlashMessageProvider.prototype.$get = function() {
-    return new FlashMessage(this.classes);
+  FlashMessageProvider.prototype.$get = function($timeout) {
+    return new FlashMessage(this.classes, $timeout);
   };
+  FlashMessageProvider.prototype.$get.$inject = ['$timeout'];
 
   angular.module('uniform.flash-message')
      .provider('FlashMessage', FlashMessageProvider);

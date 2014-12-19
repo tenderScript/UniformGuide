@@ -13,6 +13,7 @@
       action: '&',
       close: '&'
     },
+    replace:true,
     templateUrl: '/template/flash/flash.html',
     controller: FlashMessageController
   };

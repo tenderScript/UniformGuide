@@ -25,6 +25,9 @@ angular.module('flash-example', ['uniform.flash-message'])
 
      $scope.method = $scope.methods[0];
 
+     $scope.setTimeout = function() {
+       FlashMessage.timeout($scope.timeout);
+     };
 
      $scope.update = function() {
        FlashMessage[$scope.method]($scope.flashText, {
