@@ -162,6 +162,14 @@
 })();
 
 (function() {
+
+  "use strict";
+
+  angular.module('uniform.flash-message', []);
+
+})();
+
+(function() {
    ActiveMenuLinkController.$inject = ['$location'];
 
   function ActiveMenuLinkController($location) {
@@ -202,6 +210,115 @@
     .directive('activeMenuLink', function() {
         return activeMenuLink;
     });
+})();
+
+(function() {
+
+  "use strict";
+
+  FlashMessageController.$inject = ['$scope', 'FlashMessage'];
+
+  function FlashMessageController($scope, FlashMessage) {
+    $scope.message = FlashMessage;
+  }
+
+  var flashMessage = {
+    scope: {
+      action: '&',
+      close: '&'
+    },
+    replace:true,
+    templateUrl: '/template/flash/flash.html',
+    controller: FlashMessageController
+  };
+
+  function flashMessageDirective() {
+    return flashMessage;
+  }
+
+  run.$inject = ['$templateCache'];
+  function run($templateCache) {
+    var flashTpl;
+    flashTpl  = '<div class="flash-message flash-message-{{message.cssClass}}" ng-hide="message.hidden">';
+    flashTpl += '    <span class="flash-message-close" ng-show="close" ng-click="close()">&times;</span>';
+    flashTpl += '    <strong class="flash-message-bold" ng-if="message.data.boldText">{{message.data.boldText}}</strong>';
+    flashTpl += '    {{message.text}}';
+    flashTpl += '    <span class="flash-message-action" ng-if="message.data.actionText && action" ng-click="action()">{{ message.data.actionText }}</span>';
+    flashTpl += '</div>';
+    $templateCache.put('/template/flash/flash.html', flashTpl);
+  }
+
+  angular.module('uniform.flash-message')
+     .directive('flashMessage', flashMessageDirective)
+     .run(run);
+})();
+
+(function() {
+
+  "use strict";
+
+  /**
+   * Create a new FlashMessage service. The object passed
+   * in will create shortcut the classes used in the message() method.
+   *
+   * @param array classes
+   * @param angular timeout service $timeout
+   * @constructor
+   */
+  function FlashMessage(classes, $timeout) {
+    classes || (classes = {});
+    this.hidden = true;
+    var k;
+    var that = this;
+    for (k in classes) {
+      (function(method, cssClass) {
+        that[method] = function(text, data) {
+          this.message(cssClass, text, data);
+        };
+      })(k, classes[k]);
+    }
+    this.$timeout = $timeout;
+  }
+
+  /**
+   * Store the internal message contents.
+   *
+   * @param cssClass
+   * @param text
+   * @param data
+   * @returns {{cssClass: *, text: *, data: *}|*}
+   */
+  FlashMessage.prototype.message = function(cssClass, text, data) {
+    this.cssClass = cssClass;
+    this.text = text;
+    this.data = data;
+    this.hidden = false;
+  };
+
+  /**
+   * Hide the flash message.
+   */
+  FlashMessage.prototype.hide = function() {
+    this.hidden = true;
+  };
+
+  FlashMessage.prototype.timeout = function(ms) {
+    this.$timeout(angular.bind(this, this.hide), ms);
+  };
+
+  function FlashMessageProvider() {}
+  FlashMessageProvider.prototype.classes = function(obj) {
+    this.classes = obj;
+  };
+
+  FlashMessageProvider.prototype.$get = function($timeout) {
+    return new FlashMessage(this.classes, $timeout);
+  };
+  FlashMessageProvider.prototype.$get.$inject = ['$timeout'];
+
+  angular.module('uniform.flash-message')
+     .provider('FlashMessage', FlashMessageProvider);
+
 })();
 
 (function() {

@@ -20,6 +20,9 @@
 /* ===================== *
  * Buttons
  * ===================== */
+/* ===================== *
+ * Flash Messages
+ * ===================== */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -5076,3 +5079,43 @@ input:disabled, text:disabled, select:disabled {
     color: #a7a7a7; }
     .vnn-icon-slim.vnn-icon-add-white.disabled:hover:before {
       content: 'w'; }
+
+.flash-message {
+  background-color: #fff;
+  border-bottom-style: solid;
+  border-bottom-color: #000;
+  border-bottom-width: 2px;
+  border-top-style: solid;
+  border-top-color: #000;
+  border-top-width: 2px;
+  font-size: 14px;
+  padding: 20px; }
+  .flash-message .flash-message-close {
+    cursor: pointer;
+    float: right;
+    position: relative;
+    bottom: 15px; }
+  .flash-message .flash-message-action {
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    cursor: pointer; }
+
+.flash-message.flash-message-success {
+  background-color: #DFF0D8;
+  color: #3e6c2a;
+  border-color: #3e6c2a; }
+
+.flash-message.flash-message-error {
+  background-color: #F5DEDE;
+  color: #7c2525;
+  border-color: #7c2525; }
+
+.flash-message.flash-message-comment {
+  background-color: #fdf9e9;
+  color: #a5840f;
+  border-color: #a5840f; }
+
+.flash-message.flash-message-info {
+  background-color: #dbeef8;
+  color: #1a6387;
+  border-color: #1a6387; }

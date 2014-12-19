@@ -57,3 +57,15 @@ $input-color: $app-copy-color !default;
  * ===================== */
 $btn-primary-bg: $app-secondary-color !default;
 $btn-danger-bg: $app-cta-color !default;
+
+/* ===================== *
+ * Flash Messages
+ * ===================== */
+$flash-success-background-color: #DFF0D8 !default;
+$flash-success-color: darken($flash-success-background-color, 60%) !default;
+$flash-error-background-color: #F5DEDE !default;
+$flash-error-color: darken($flash-error-background-color, 60%) !default;
+$flash-comment-background-color: #fdf9e9 !default;
+$flash-comment-color: darken($flash-comment-background-color, 60%) !default;
+$flash-info-background-color: #dbeef8 !default;
+$flash-info-color: darken($flash-info-background-color, 60%) !default;

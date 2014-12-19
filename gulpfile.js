@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 var srcDir = "assets",
     distDir = "dist",
-    watchPaths = ['scss'].reduce(function(paths, ext) {
+    watchPaths = ['scss', 'js'].reduce(function(paths, ext) {
       return paths.concat([srcDir + '/**/*.' + ext, srcDir + '/*.' + ext]);
     }, []),
     sassConfig = {
@@ -37,6 +37,7 @@ gulp.task('js', ['clean'], function() {
   ];
   var src = [
     srcDir + '/js/directives/uniform.js',
+    srcDir + '/js/directives/flash_message/flash_message.js',
     srcDir + '/js/**/*.js',
     "!" + srcDir + '/js/**/*-test.js'
   ];
