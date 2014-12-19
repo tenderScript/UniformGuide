@@ -275,6 +275,10 @@
         that[method] = function(text, data) {
           this.message(cssClass, text, data);
         };
+
+        that.callout[method] = function(boldText, text, actionText, timeout) {
+          that.callout(cssClass, boldText, text, actionText, timeout);
+        };
       })(k, classes[k]);
     }
     this.$timeout = $timeout;
@@ -294,6 +298,27 @@
     this.data = data;
     this.hidden = false;
     return this;
+  };
+
+  /**
+   * Creates a common structure for flash messages that involve bold text, a message, and
+   * some actionable text.
+   *
+   * @param cssClass
+   * @param boldText
+   * @param text
+   * @param actionText
+   * @param timeout
+   */
+  FlashMessage.prototype.callout = function(cssClass, boldText, text, actionText, timeout) {
+    this.message(cssClass, text, {
+      boldText: boldText,
+      actionText: actionText
+    });
+
+    if (timeout) {
+      this.timeout(timeout);
+    }
   };
 
   /**
