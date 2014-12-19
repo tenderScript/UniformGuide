@@ -38,6 +38,7 @@
     this.text = text;
     this.data = data;
     this.hidden = false;
+    return this;
   };
 
   /**
@@ -45,10 +46,12 @@
    */
   FlashMessage.prototype.hide = function() {
     this.hidden = true;
+    return this;
   };
 
   FlashMessage.prototype.timeout = function(ms) {
     this.$timeout(angular.bind(this, this.hide), ms);
+    return this;
   };
 
   function FlashMessageProvider() {}
