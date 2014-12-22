@@ -5,7 +5,11 @@
 
   stripHighSchool = function() {
     return function(schoolName) {
-      return schoolName != null ? schoolName.replace('High School', '').replace(/\s+/g, ' ').trim() : void 0;
+      if (schoolName != null) {
+        return schoolName.replace('High School', '').replace(/\s+/g, ' ').trim();
+      }
+
+      return void 0;
     };
   };
 
