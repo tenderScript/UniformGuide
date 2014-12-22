@@ -1,15 +1,13 @@
 (function() {
   "use strict";
 
-  var stripHighSchool;
-
-  stripHighSchool = function() {
+  var stripHighSchool = function() {
     return function(schoolName) {
       if (schoolName != null) {
         return schoolName.replace('High School', '').replace(/\s+/g, ' ').trim();
       }
 
-      return void 0;
+      return null;
     };
   };
 

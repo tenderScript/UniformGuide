@@ -10,8 +10,8 @@ describe('uniform.filters.schools', function() {
         expect(stripHighSchoolFilter('Foo High School Bar School')).toBe('Foo Bar School');
     }));
 
-    it('should do nothing if the school name is undefined', inject(function(stripHighSchoolFilter) {
-      expect(stripHighSchoolFilter(undefined)).toBe(undefined);
+    it("should do nothing if the school name does not contain 'High School", inject(function(stripHighSchoolFilter) {
+      expect(stripHighSchoolFilter('Foo School')).toBe('Foo School');
     }));
   });
 });

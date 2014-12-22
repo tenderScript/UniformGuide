@@ -1,15 +1,13 @@
 (function() {
   "use strict";
 
-  var shortLevelName;
-
-  shortLevelName = function() {
+  var shortLevelName = function() {
     return function(levelName) {
       if (levelName != null) {
         return levelName.replace('Junior Varsity', 'JV').replace(/\s+/g, ' ').trim();
       }
 
-      return void 0;
+      return null;
     };
   };
 
