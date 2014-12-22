@@ -47,6 +47,35 @@ describe('FlashMessage', function() {
     })
   });
 
+  describe('.onAction()', function() {
+    it('should register an action', function() {
+      var cb = function() {
+
+      };
+      this.service.onAction(cb);
+      expect(cb).toEqual(this.service.actions[0]);
+    });
+  });
+
+  describe('.triggerActions()', function() {
+    it('should execute bound actions scoped to service', function() {
+      this.service.fixture = true;
+      var cb = function() {
+        this.fixture = false;
+      };
+      this.service.onAction(cb);
+      this.service.triggerActions();
+      expect(this.service.fixture).toBe(false);
+    });
+
+    it('should function as a queue', function() {
+      var cb = function() {};
+      this.service.onAction(cb);
+      this.service.triggerActions();
+      expect(this.service.actions.length).toBe(0);
+    });
+  });
+
   describe('.hide()', function() {
     it('should set the hidden status', function() {
       this.service.hidden = false;

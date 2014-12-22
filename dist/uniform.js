@@ -176,46 +176,171 @@
 })();
 
 (function() {
-   ActiveMenuLinkController.$inject = ['$location'];
 
-  function ActiveMenuLinkController($location) {
-    this.$location = $location;
+  "use strict";
+
+  FlashMessageController.$inject = ['$scope', 'FlashMessage'];
+
+  function FlashMessageController($scope, FlashMessage) {
+    this.$scope = $scope;
+    this.$scope.message = FlashMessage;
   }
 
-  ActiveMenuLinkController.prototype.routeMatches = function(path) {
-    if (path.substr(0, 1) == '#') {
-      path = path.substr(1);
-    }
-    if (path == '/') {
-      return this.$location.path() == path;
-    }
-    return this.$location.path().substr(0, path.length) === path;
+  FlashMessageController.prototype.onAction = function() {
+    this.$scope.message.triggerActions();
   };
 
-  ActiveMenuLinkController.prototype.onRouteChange = function (elem, path) {
-      if (this.routeMatches(path)) {
-          elem.addClass('active');
-      } else {
-          elem.removeClass('active');
-      }
+  var flashMessage = {
+    replace:true,
+    templateUrl: '/template/flash/flash.html',
+    controller: FlashMessageController,
+    controllerAs: 'flash'
   };
 
-  var activeMenuLink = {
-    restrict: 'A',
-    controller: ActiveMenuLinkController,
-    link: function ($scope, elem, attrs, ctrl) {
-      $scope.$on('$routeChangeSuccess', function () {
-        ctrl.onRouteChange(elem, attrs.href);
-      });
+  function flashMessageDirective() {
+    return flashMessage;
+  }
 
-      ctrl.onRouteChange(elem, attrs.href);
+  run.$inject = ['$templateCache'];
+  function run($templateCache) {
+    var flashTpl;
+    flashTpl  = '<div class="flash-message flash-message-{{message.cssClass}}" ng-hide="message.hidden">';
+    flashTpl += '    <span class="flash-message-close" ng-click="message.hide()">&times;</span>';
+    flashTpl += '    <strong class="flash-message-bold" ng-if="message.data.boldText">{{message.data.boldText}}</strong>';
+    flashTpl += '    {{message.text}}';
+    flashTpl += '    <span class="flash-message-action" ng-if="message.data.actionText && message.actions" ng-click="flash.onAction()">{{ message.data.actionText }}</span>';
+    flashTpl += '</div>';
+    $templateCache.put('/template/flash/flash.html', flashTpl);
+  }
+
+  angular.module('uniform.flash-message')
+     .directive('flashMessage', flashMessageDirective)
+     .run(run);
+})();
+
+(function() {
+
+  "use strict";
+
+  /**
+   * Create a new FlashMessage service. The object passed
+   * in will create shortcut the classes used in the message() method.
+   *
+   * @param array classes
+   * @param angular timeout service $timeout
+   * @constructor
+   */
+  function FlashMessage(classes, $timeout) {
+    classes || (classes = {});
+    this.hidden = true;
+    this.actions = [];
+
+    var k;
+    var that = this;
+    for (k in classes) {
+      (function(method, cssClass) {
+        that[method] = function(text, data) {
+          this.message(cssClass, text, data);
+        };
+
+        that.callout[method] = function(boldText, text, actionText, timeout) {
+          that.callout(cssClass, boldText, text, actionText, timeout);
+        };
+      })(k, classes[k]);
     }
+    this.$timeout = $timeout;
+  }
+
+  /**
+   * Store the internal message contents.
+   *
+   * @param cssClass
+   * @param text
+   * @param data
+   * @returns {{cssClass: *, text: *, data: *}|*}
+   */
+  FlashMessage.prototype.message = function(cssClass, text, data) {
+    this.cssClass = cssClass;
+    this.text = text;
+    this.data = data;
+    this.hidden = false;
+    return this;
   };
 
-  angular.module('uniform.active-menu-link', [])
-    .directive('activeMenuLink', function() {
-        return activeMenuLink;
+  /**
+   * Creates a common structure for flash messages that involve bold text, a message, and
+   * some actionable text.
+   *
+   * @param cssClass
+   * @param boldText
+   * @param text
+   * @param actionText
+   * @param timeout
+   */
+  FlashMessage.prototype.callout = function(cssClass, boldText, text, actionText, timeout) {
+    this.message(cssClass, text, {
+      boldText: boldText,
+      actionText: actionText
     });
+
+    if (timeout) {
+      this.timeout(timeout);
+    }
+  };
+
+  /**
+   * Register a function to be called when action is taken
+   * on the flash message.
+   *
+   * @param cb
+   */
+  FlashMessage.prototype.onAction = function(cb) {
+    this.actions.unshift(cb);
+  };
+
+  /**
+   * Execute all registered callbacks
+   */
+  FlashMessage.prototype.triggerActions = function() {
+    var cb;
+    while (cb = this.actions.shift()) {
+      cb.apply(this);
+    }
+  };
+
+  /**
+   * Hide the flash message.
+   */
+  FlashMessage.prototype.hide = function() {
+    this.hidden = true;
+    return this;
+  };
+
+  /**
+   * Set a timeout for the flash message. The flash message
+   * will be set to a hidden state after the timeout is executed.
+   *
+   * @param ms
+   * @returns {FlashMessage}
+   */
+  FlashMessage.prototype.timeout = function(ms) {
+    this.$timeout(angular.bind(this, this.hide), ms);
+    return this;
+  };
+
+  function FlashMessageProvider() {}
+  FlashMessageProvider.prototype.classes = function(obj) {
+    this.classes = obj;
+  };
+
+  FlashMessageProvider.prototype.$get = function($timeout) {
+    return new FlashMessage(this.classes, $timeout);
+  };
+  FlashMessageProvider.prototype.$get.$inject = ['$timeout'];
+
+  angular.module('uniform.flash-message')
+     .provider('FlashMessage', FlashMessageProvider);
+
 })();
 
 (function() {
@@ -275,165 +400,46 @@
 })();
 
 (function() {
+   ActiveMenuLinkController.$inject = ['$location'];
 
-  "use strict";
-
-  FlashMessageController.$inject = ['$scope', 'FlashMessage'];
-
-  function FlashMessageController($scope, FlashMessage) {
-    $scope.message = FlashMessage;
+  function ActiveMenuLinkController($location) {
+    this.$location = $location;
   }
 
-  var flashMessage = {
-    scope: {
-      action: '&',
-      close: '&'
-    },
-    replace:true,
-    templateUrl: '/template/flash/flash.html',
-    controller: FlashMessageController
-  };
-
-  function flashMessageDirective() {
-    return flashMessage;
-  }
-
-  run.$inject = ['$templateCache'];
-  function run($templateCache) {
-    var flashTpl;
-    flashTpl  = '<div class="flash-message flash-message-{{message.cssClass}}" ng-hide="message.hidden">';
-    flashTpl += '    <span class="flash-message-close" ng-show="close" ng-click="close()">&times;</span>';
-    flashTpl += '    <strong class="flash-message-bold" ng-if="message.data.boldText">{{message.data.boldText}}</strong>';
-    flashTpl += '    {{message.text}}';
-    flashTpl += '    <span class="flash-message-action" ng-if="message.data.actionText && action" ng-click="action()">{{ message.data.actionText }}</span>';
-    flashTpl += '</div>';
-    $templateCache.put('/template/flash/flash.html', flashTpl);
-  }
-
-  angular.module('uniform.flash-message')
-     .directive('flashMessage', flashMessageDirective)
-     .run(run);
-})();
-
-(function() {
-
-  "use strict";
-
-  /**
-   * Create a new FlashMessage service. The object passed
-   * in will create shortcut the classes used in the message() method.
-   *
-   * @param array classes
-   * @param angular timeout service $timeout
-   * @constructor
-   */
-  function FlashMessage(classes, $timeout) {
-    classes || (classes = {});
-    this.hidden = true;
-    var k;
-    var that = this;
-    for (k in classes) {
-      (function(method, cssClass) {
-        that[method] = function(text, data) {
-          this.message(cssClass, text, data);
-        };
-
-        that.callout[method] = function(boldText, text, actionText, timeout) {
-          that.callout(cssClass, boldText, text, actionText, timeout);
-        };
-      })(k, classes[k]);
+  ActiveMenuLinkController.prototype.routeMatches = function(path) {
+    if (path.substr(0, 1) == '#') {
+      path = path.substr(1);
     }
-    this.$timeout = $timeout;
-  }
-
-  /**
-   * Store the internal message contents.
-   *
-   * @param cssClass
-   * @param text
-   * @param data
-   * @returns {{cssClass: *, text: *, data: *}|*}
-   */
-  FlashMessage.prototype.message = function(cssClass, text, data) {
-    this.cssClass = cssClass;
-    this.text = text;
-    this.data = data;
-    this.hidden = false;
-    return this;
-  };
-
-  /**
-   * Creates a common structure for flash messages that involve bold text, a message, and
-   * some actionable text.
-   *
-   * @param cssClass
-   * @param boldText
-   * @param text
-   * @param actionText
-   * @param timeout
-   */
-  FlashMessage.prototype.callout = function(cssClass, boldText, text, actionText, timeout) {
-    this.message(cssClass, text, {
-      boldText: boldText,
-      actionText: actionText
-    });
-
-    if (timeout) {
-      this.timeout(timeout);
+    if (path == '/') {
+      return this.$location.path() == path;
     }
+    return this.$location.path().substr(0, path.length) === path;
   };
 
-  /**
-   * Hide the flash message.
-   */
-  FlashMessage.prototype.hide = function() {
-    this.hidden = true;
-    return this;
-  };
-
-  FlashMessage.prototype.timeout = function(ms) {
-    this.$timeout(angular.bind(this, this.hide), ms);
-    return this;
-  };
-
-  function FlashMessageProvider() {}
-  FlashMessageProvider.prototype.classes = function(obj) {
-    this.classes = obj;
-  };
-
-  FlashMessageProvider.prototype.$get = function($timeout) {
-    return new FlashMessage(this.classes, $timeout);
-  };
-  FlashMessageProvider.prototype.$get.$inject = ['$timeout'];
-
-  angular.module('uniform.flash-message')
-     .provider('FlashMessage', FlashMessageProvider);
-
-})();
-
-(function() {
-  "use strict";
-
-  angular.module('uniform.filters.schools', []);
-})();
-
-(function() {
-  "use strict";
-
-  var stripHighSchool;
-
-  stripHighSchool = function() {
-    return function(schoolName) {
-      if (schoolName != null) {
-        return schoolName.replace('High School', '').replace(/\s+/g, ' ').trim();
+  ActiveMenuLinkController.prototype.onRouteChange = function (elem, path) {
+      if (this.routeMatches(path)) {
+          elem.addClass('active');
+      } else {
+          elem.removeClass('active');
       }
-
-      return void 0;
-    };
   };
 
-  angular.module('uniform.filters.schools')
-    .filter('stripHighSchool', stripHighSchool);
+  var activeMenuLink = {
+    restrict: 'A',
+    controller: ActiveMenuLinkController,
+    link: function ($scope, elem, attrs, ctrl) {
+      $scope.$on('$routeChangeSuccess', function () {
+        ctrl.onRouteChange(elem, attrs.href);
+      });
+
+      ctrl.onRouteChange(elem, attrs.href);
+    }
+  };
+
+  angular.module('uniform.active-menu-link', [])
+    .directive('activeMenuLink', function() {
+        return activeMenuLink;
+    });
 })();
 
 (function() {
@@ -445,18 +451,39 @@
 (function() {
   "use strict";
 
-  var shortLevelName;
-
-  shortLevelName = function() {
+  var shortLevelName = function() {
     return function(levelName) {
       if (levelName != null) {
         return levelName.replace('Junior Varsity', 'JV').replace(/\s+/g, ' ').trim();
       }
 
-      return void 0;
+      return null;
     };
   };
 
   angular.module('uniform.filters.levels')
     .filter('shortLevelName', shortLevelName);
+})();
+
+(function() {
+  "use strict";
+
+  angular.module('uniform.filters.schools', []);
+})();
+
+(function() {
+  "use strict";
+
+  var stripHighSchool = function() {
+    return function(schoolName) {
+      if (schoolName != null) {
+        return schoolName.replace('High School', '').replace(/\s+/g, ' ').trim();
+      }
+
+      return null;
+    };
+  };
+
+  angular.module('uniform.filters.schools')
+    .filter('stripHighSchool', stripHighSchool);
 })();

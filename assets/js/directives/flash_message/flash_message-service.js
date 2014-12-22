@@ -13,6 +13,8 @@
   function FlashMessage(classes, $timeout) {
     classes || (classes = {});
     this.hidden = true;
+    this.actions = [];
+
     var k;
     var that = this;
     for (k in classes) {
@@ -67,6 +69,26 @@
   };
 
   /**
+   * Register a function to be called when action is taken
+   * on the flash message.
+   *
+   * @param cb
+   */
+  FlashMessage.prototype.onAction = function(cb) {
+    this.actions.unshift(cb);
+  };
+
+  /**
+   * Execute all registered callbacks
+   */
+  FlashMessage.prototype.triggerActions = function() {
+    var cb;
+    while (cb = this.actions.shift()) {
+      cb.apply(this);
+    }
+  };
+
+  /**
    * Hide the flash message.
    */
   FlashMessage.prototype.hide = function() {
@@ -74,6 +96,13 @@
     return this;
   };
 
+  /**
+   * Set a timeout for the flash message. The flash message
+   * will be set to a hidden state after the timeout is executed.
+   *
+   * @param ms
+   * @returns {FlashMessage}
+   */
   FlashMessage.prototype.timeout = function(ms) {
     this.$timeout(angular.bind(this, this.hide), ms);
     return this;

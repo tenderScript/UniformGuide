@@ -19,6 +19,11 @@ angular.module('flash-example', ['uniform.flash-message', 'ngAnimate'])
        }
      });
 
+     FlashMessage.onAction(function() {
+       alert('closing!');
+       this.hide();
+     });
+
      FlashMessage.success('hello', {actionText: $scope.actionText, boldText: $scope.boldText});
 
      $scope.methods = ['success', 'error', 'info', 'comment'];
@@ -36,8 +41,4 @@ angular.module('flash-example', ['uniform.flash-message', 'ngAnimate'])
      $scope.close = function() {
        FlashMessage.hide();
      };
-
-     $scope.doAction = function() {
-       alert('action!');
-     }
    });
