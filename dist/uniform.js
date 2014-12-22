@@ -170,6 +170,12 @@
 })();
 
 (function() {
+  "use strict";
+
+  angular.module('uniform.filters', ['uniform.filters.levels', 'uniform.filters.schools']);
+})();
+
+(function() {
    ActiveMenuLinkController.$inject = ['$location'];
 
   function ActiveMenuLinkController($location) {
@@ -210,6 +216,62 @@
     .directive('activeMenuLink', function() {
         return activeMenuLink;
     });
+})();
+
+(function() {
+
+  LogoutButtonController.$inject = ['$q', '$window'];
+
+  function LogoutButtonController($q, $window) {
+    this.$q = $q;
+    this.$window = $window;
+  }
+
+  LogoutButtonController.prototype.setScope = function($scope) {
+    $scope.redirect || ($scope.redirect = '/');
+    $scope.cookie || ($scope.cookie = 'access_token');
+    $scope.cookieDomain || ($scope.cookieDomain = '*');
+    $scope.action || ($scope.action = function() {});
+    this.$scope = $scope;
+  };
+
+  LogoutButtonController.prototype.onClick = function() {
+    var that = this,
+        args = [this.$scope.cookie],
+        redirect = (function(path) {
+          return function() {
+            that.$window.location = path;
+          };
+        })(this.$scope.redirect);
+    this.$scope.cookieDomain != '*' && (args = args.concat([{domain: this.$scope.cookieDomain}]));
+
+    return function(e) {
+      e.preventDefault();
+      Cookies.expire.apply(null, args);
+      that.$q.when(that.$scope.action()).then(redirect);
+    }
+  };
+
+  var logoutButton = {
+    scope: {
+      redirect:'@',
+      cookie: '@',
+      cookieDomain: '@',
+      action: '='
+    },
+    restrict: 'A',
+    controller: LogoutButtonController,
+    link: function($scope, elem, attrs, ctrl) {
+      ctrl.setScope($scope);
+      elem.on('click', ctrl.onClick());
+    }
+  };
+
+  angular.module('uniform.logout-button', [])
+     .directive('logoutButton', function() {
+       return logoutButton;
+     });
+
 })();
 
 (function() {
@@ -350,57 +412,51 @@
 })();
 
 (function() {
+  "use strict";
 
-  LogoutButtonController.$inject = ['$q', '$window'];
+  angular.module('uniform.filters.schools', []);
+})();
 
-  function LogoutButtonController($q, $window) {
-    this.$q = $q;
-    this.$window = $window;
-  }
+(function() {
+  "use strict";
 
-  LogoutButtonController.prototype.setScope = function($scope) {
-    $scope.redirect || ($scope.redirect = '/');
-    $scope.cookie || ($scope.cookie = 'access_token');
-    $scope.cookieDomain || ($scope.cookieDomain = '*');
-    $scope.action || ($scope.action = function() {});
-    this.$scope = $scope;
+  var stripHighSchool;
+
+  stripHighSchool = function() {
+    return function(schoolName) {
+      if (schoolName != null) {
+        return schoolName.replace('High School', '').replace(/\s+/g, ' ').trim();
+      }
+
+      return void 0;
+    };
   };
 
-  LogoutButtonController.prototype.onClick = function() {
-    var that = this,
-        args = [this.$scope.cookie],
-        redirect = (function(path) {
-          return function() {
-            that.$window.location = path;
-          };
-        })(this.$scope.redirect);
-    this.$scope.cookieDomain != '*' && (args = args.concat([{domain: this.$scope.cookieDomain}]));
+  angular.module('uniform.filters.schools')
+    .filter('stripHighSchool', stripHighSchool);
+})();
 
-    return function(e) {
-      e.preventDefault();
-      Cookies.expire.apply(null, args);
-      that.$q.when(that.$scope.action()).then(redirect);
-    }
+(function() {
+  "use strict";
+
+  angular.module('uniform.filters.levels', []);
+})();
+
+(function() {
+  "use strict";
+
+  var shortLevelName;
+
+  shortLevelName = function() {
+    return function(levelName) {
+      if (levelName != null) {
+        return levelName.replace('Junior Varsity', 'JV').replace(/\s+/g, ' ').trim();
+      }
+
+      return void 0;
+    };
   };
 
-  var logoutButton = {
-    scope: {
-      redirect:'@',
-      cookie: '@',
-      cookieDomain: '@',
-      action: '='
-    },
-    restrict: 'A',
-    controller: LogoutButtonController,
-    link: function($scope, elem, attrs, ctrl) {
-      ctrl.setScope($scope);
-      elem.on('click', ctrl.onClick());
-    }
-  };
-
-  angular.module('uniform.logout-button', [])
-     .directive('logoutButton', function() {
-       return logoutButton;
-     });
-
+  angular.module('uniform.filters.levels')
+    .filter('shortLevelName', shortLevelName);
 })();
