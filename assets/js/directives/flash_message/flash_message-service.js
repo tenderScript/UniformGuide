@@ -24,7 +24,7 @@
         };
 
         that.callout[method] = function(boldText, text, actionText, timeout) {
-          that.callout(cssClass, boldText, text, actionText, timeout);
+          return that.callout(cssClass, boldText, text, actionText, timeout);
         };
       })(k, classes[k]);
     }
@@ -66,6 +66,8 @@
     if (timeout) {
       this.timeout(timeout);
     }
+
+    return this;
   };
 
   /**
@@ -76,6 +78,7 @@
    */
   FlashMessage.prototype.onAction = function(cb) {
     this.actions.unshift(cb);
+    return this;
   };
 
   /**
