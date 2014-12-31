@@ -5104,21 +5104,21 @@ input:disabled, text:disabled, select:disabled {
     cursor: pointer; }
 
 .flash-message.flash-message-success {
-  background-color: #DFF0D8;
-  color: #3d6c2a;
-  border-color: #3d6c2a; }
+  background-color: #deedd6;
+  color: #49b86f;
+  border-color: #49b86f; }
 
 .flash-message.flash-message-error {
-  background-color: #F5DEDE;
-  color: #7c2525;
-  border-color: #7c2525; }
+  background-color: #efdfde;
+  color: #c03a29;
+  border-color: #c03a29; }
 
 .flash-message.flash-message-comment {
-  background-color: #fdf9e9;
-  color: #a5870f;
-  border-color: #a5870f; }
+  background-color: #fcf6e6;
+  color: #f29c1f;
+  border-color: #f29c1f; }
 
 .flash-message.flash-message-info {
-  background-color: #dbeef8;
-  color: #1a6187;
-  border-color: #1a6187; }
+  background-color: #dbedf5;
+  color: #3b97d3;
+  border-color: #3b97d3; }
