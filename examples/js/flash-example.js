@@ -9,7 +9,7 @@ angular.module('flash-example', ['uniform.flash-message', 'ngAnimate'])
    })
   .controller('FlashMessageExampleController', function($scope, FlashMessage) {
 
-     $scope.flashText = 'hello';
+     $scope.flashText = "<a href='#'>hello</a>";
      $scope.actionText = 'click me';
      $scope.boldText = 'Hey Dude!';
 
@@ -24,7 +24,7 @@ angular.module('flash-example', ['uniform.flash-message', 'ngAnimate'])
        this.hide();
      });
 
-     FlashMessage.success('hello', {actionText: $scope.actionText, boldText: $scope.boldText});
+     FlashMessage.success("<a href='#'>hello</a>", {actionText: $scope.actionText, boldText: $scope.boldText});
 
      $scope.methods = ['success', 'error', 'info', 'comment'];
 

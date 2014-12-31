@@ -5102,6 +5102,8 @@ input:disabled, text:disabled, select:disabled {
     border-bottom-style: dotted;
     border-bottom-width: 1px;
     cursor: pointer; }
+  .flash-message .flash-message-text {
+    display: inline; }
 
 .flash-message.flash-message-success {
   background-color: #deedd6;
