@@ -4695,6 +4695,9 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary:visited {
   color: #fff; }
 
+.btn-vnn {
+  width: 225px; }
+
 .btn-lg, .btn-group-lg > .btn {
   padding: 10px 16px;
   font-size: 14px;
@@ -5102,8 +5105,8 @@ input:disabled, text:disabled, select:disabled {
 
 .flash-message.flash-message-success {
   background-color: #DFF0D8;
-  color: #3e6c2a;
-  border-color: #3e6c2a; }
+  color: #3d6c2a;
+  border-color: #3d6c2a; }
 
 .flash-message.flash-message-error {
   background-color: #F5DEDE;
@@ -5112,10 +5115,10 @@ input:disabled, text:disabled, select:disabled {
 
 .flash-message.flash-message-comment {
   background-color: #fdf9e9;
-  color: #a5840f;
-  border-color: #a5840f; }
+  color: #a5870f;
+  border-color: #a5870f; }
 
 .flash-message.flash-message-info {
   background-color: #dbeef8;
-  color: #1a6387;
-  border-color: #1a6387; }
+  color: #1a6187;
+  border-color: #1a6187; }
