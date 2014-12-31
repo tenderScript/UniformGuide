@@ -61,11 +61,11 @@ $btn-danger-bg: $app-cta-color !default;
 /* ===================== *
  * Flash Messages
  * ===================== */
-$flash-success-background-color: #DFF0D8 !default;
-$flash-success-color: darken($flash-success-background-color, 60%) !default;
-$flash-error-background-color: #F5DEDE !default;
-$flash-error-color: darken($flash-error-background-color, 60%) !default;
-$flash-comment-background-color: #fdf9e9 !default;
-$flash-comment-color: darken($flash-comment-background-color, 60%) !default;
-$flash-info-background-color: #dbeef8 !default;
-$flash-info-color: darken($flash-info-background-color, 60%) !default;
+$flash-success-background-color: #deedd6 !default;
+$flash-success-color: #49b86f !default;
+$flash-error-background-color: #efdfde !default;
+$flash-error-color: #c03a29 !default;
+$flash-comment-background-color: #fcf6e6 !default;
+$flash-comment-color: #f29c1f !default;
+$flash-info-background-color: #dbedf5 !default;
+$flash-info-color: #3b97d3 !default;
