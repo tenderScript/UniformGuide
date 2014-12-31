@@ -82,6 +82,12 @@ describe('FlashMessage', function() {
       this.service.hide();
       expect(this.service.hidden).toBe(true);
     });
+
+    it('should reset actions', function() {
+      this.service.onAction(function() {});
+      this.service.hide();
+      expect(this.service.actions.length).toBe(0);
+    });
   });
 
   describe('.timeout()', function() {

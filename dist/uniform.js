@@ -361,10 +361,12 @@
   };
 
   /**
-   * Hide the flash message.
+   * Hide the flash message. Actions are reset when a
+   * flash message is hidden.
    */
   FlashMessage.prototype.hide = function() {
     this.hidden = true;
+    this.actions = [];
     return this;
   };
 
