@@ -5032,6 +5032,8 @@ input:disabled, text:disabled, select:disabled {
   content: 'T'; }
 .vnn-icon-slim.vnn-icon-dude-circle:before {
   content: 'V'; }
+.vnn-icon-slim.vnn-icon-dude-circle-filled:before {
+  content: '+'; }
 .vnn-icon-slim.vnn-icon-camera:before {
   content: 'W'; }
 .vnn-icon-slim.vnn-icon-camera-circle:before {

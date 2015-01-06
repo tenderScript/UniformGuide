@@ -521,7 +521,7 @@
   var stripHighSchool = function() {
     return function(schoolName) {
       if (schoolName != null) {
-        return schoolName.replace('High School', '').replace(/\s+/g, ' ').trim();
+        return schoolName.replace(/high school\s*$/i, '').trim();
       }
 
       return null;
