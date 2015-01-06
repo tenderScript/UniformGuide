@@ -446,6 +446,12 @@
     }
   }
 
+  &.vnn-icon-dude-circle-filled {
+    &:before {
+      content: '+';
+    }
+  }
+
   &.vnn-icon-camera {
     &:before {
       content: 'W';
