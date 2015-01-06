@@ -1,5 +1,5 @@
 describe('uniform.filters.schools', function() {
-  beforeEach(module('uniform.filters'));
+  beforeEach(module('uniform.filters.schools'));
 
   describe('stripHighSchool filter', function() {
     it("should remove the string 'High School' from the given school name", inject(function(stripHighSchoolFilter) {

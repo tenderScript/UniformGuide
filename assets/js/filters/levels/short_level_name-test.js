@@ -1,5 +1,5 @@
 describe('uniform.filters.levels', function() {
-  beforeEach(module('uniform.filters'));
+  beforeEach(module('uniform.filters.levels'));
 
   describe('shortLevelName filter', function() {
     it("should reduce 'Junior Varsity' to 'JV'", inject(function(shortLevelNameFilter) {
