@@ -25,6 +25,8 @@ describe('uniform.filters.schools', function() {
     });
 
     it('should account for any whitespace at the end of the school name', function () {
+      expect(this.stripHighSchoolFilter('Foo High School         ')).toBe('Foo');
+      expect(this.stripHighSchoolFilter('Foo High School\n')).toBe('Foo');
       expect(this.stripHighSchoolFilter('Foo High School ')).toBe('Foo');
     });
   });
