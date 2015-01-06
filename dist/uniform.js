@@ -172,6 +172,12 @@
 (function() {
   "use strict";
 
+  angular.module('uniform.filters.primitives', []);
+})();
+
+(function() {
+  "use strict";
+
   angular.module(
     'uniform.filters',
     ['uniform.filters.levels', 'uniform.filters.primitives', 'uniform.filters.schools']
@@ -501,12 +507,6 @@
 
   angular.module('uniform.filters.primitives')
     .filter('ordinalSuffix', ordinalSuffix);
-})();
-
-(function() {
-  "use strict";
-
-  angular.module('uniform.filters.primitives', []);
 })();
 
 (function() {

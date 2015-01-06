@@ -1,5 +1,5 @@
 describe('uniform.filters.primitives', function() {
-  beforeEach(module('uniform.filters'));
+  beforeEach(module('uniform.filters.primitives'));
 
   describe('ordinalSuffix filter', function() {
     it("should convert 0 to '0th'", inject(function(ordinalSuffixFilter) {

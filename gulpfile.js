@@ -38,6 +38,7 @@ gulp.task('js', ['clean'], function() {
   var src = [
     srcDir + '/js/directives/uniform.js',
     srcDir + '/js/directives/flash_message/flash_message.js',
+    srcDir + '/js/filters/primitives/primitives.js',
     srcDir + '/js/**/*.js',
     "!" + srcDir + '/js/**/*-test.js'
   ];
