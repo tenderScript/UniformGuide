@@ -9,6 +9,7 @@ var env = {
     'assets/js/directives/flash_message/*-test.js',
     'assets/js/directives/logout_button/*-test.js',
     'assets/js/filters/levels/*-test.js',
+    'assets/js/filters/primitives/*-test.js',
     'assets/js/filters/schools/*-test.js'
   ],
   test: [
@@ -18,9 +19,11 @@ var env = {
     'assets/js/directives/flash_message/*.js',
     'assets/js/directives/logout_button/*.js',
     'assets/js/filters/levels/levels.js',
+    'assets/js/filters/primitives/primitives.js',
     'assets/js/filters/schools/schools.js',
     'assets/js/filters/filters.js',
     'assets/js/filters/levels/*.js',
+    'assets/js/filters/primitives/*.js',
     'assets/js/filters/schools/*.js'
   ],
   dist: [
