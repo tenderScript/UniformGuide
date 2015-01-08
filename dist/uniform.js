@@ -180,55 +180,8 @@
 
   angular.module(
     'uniform.filters',
-    ['uniform.filters.levels', 'uniform.filters.primitives', 'uniform.filters.schools']
+    ['uniform.filters.levels', 'uniform.filters.primitives', 'uniform.filters.schools', 'uniform.filters.teams']
   );
-})();
-
-(function() {
-  "use strict";
-
-  angular.module('uniform.filters.levels', []);
-})();
-
-(function() {
-  "use strict";
-
-  var shortLevelName = function() {
-    return function(levelName) {
-      if (levelName != null) {
-        return levelName.replace('Junior Varsity', 'JV').replace(/\s+/g, ' ').trim();
-      }
-
-      return null;
-    };
-  };
-
-  angular.module('uniform.filters.levels')
-    .filter('shortLevelName', shortLevelName);
-})();
-
-(function() {
-  "use strict";
-
-  var ordinalSuffix = function() {
-    return function(number) {
-      if (number.toString().slice(-1) == '1') {
-        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
-          number.toString() + 'th' : number.toString() + 'st';
-      } else if (number.toString().slice(-1) == '2') {
-        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
-          number.toString() + 'th' : number.toString() + 'nd';
-      } else if (number.toString().slice(-1) == '3') {
-        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
-          number.toString() + 'th' : number.toString() + 'rd';
-      } else {
-        return number.toString() + 'th'
-      }
-    };
-  };
-
-  angular.module('uniform.filters.primitives')
-    .filter('ordinalSuffix', ordinalSuffix);
 })();
 
 (function() {
@@ -275,26 +228,59 @@
 })();
 
 (function() {
-  "use strict";
 
-  angular.module('uniform.filters.schools', []);
-})();
+  LogoutButtonController.$inject = ['$q', '$window'];
 
-(function() {
-  "use strict";
+  function LogoutButtonController($q, $window) {
+    this.$q = $q;
+    this.$window = $window;
+  }
 
-  var stripHighSchool = function() {
-    return function(schoolName) {
-      if (schoolName != null) {
-        return schoolName.replace(/high school\s*$/i, '').trim();
-      }
-
-      return null;
-    };
+  LogoutButtonController.prototype.setScope = function($scope) {
+    $scope.redirect || ($scope.redirect = '/');
+    $scope.cookie || ($scope.cookie = 'access_token');
+    $scope.cookieDomain || ($scope.cookieDomain = '*');
+    $scope.action || ($scope.action = function() {});
+    this.$scope = $scope;
   };
 
-  angular.module('uniform.filters.schools')
-    .filter('stripHighSchool', stripHighSchool);
+  LogoutButtonController.prototype.onClick = function() {
+    var that = this,
+        args = [this.$scope.cookie],
+        redirect = (function(path) {
+          return function() {
+            that.$window.location = path;
+          };
+        })(this.$scope.redirect);
+    this.$scope.cookieDomain != '*' && (args = args.concat([{domain: this.$scope.cookieDomain}]));
+
+    return function(e) {
+      e.preventDefault();
+      Cookies.expire.apply(null, args);
+      that.$q.when(that.$scope.action()).then(redirect);
+    }
+  };
+
+  var logoutButton = {
+    scope: {
+      redirect:'@',
+      cookie: '@',
+      cookieDomain: '@',
+      action: '='
+    },
+    restrict: 'A',
+    controller: LogoutButtonController,
+    link: function($scope, elem, attrs, ctrl) {
+      ctrl.setScope($scope);
+      elem.on('click', ctrl.onClick());
+    }
+  };
+
+  angular.module('uniform.logout-button', [])
+     .directive('logoutButton', function() {
+       return logoutButton;
+     });
+
 })();
 
 (function() {
@@ -477,6 +463,53 @@
 })();
 
 (function() {
+  "use strict";
+
+  angular.module('uniform.filters.levels', []);
+})();
+
+(function() {
+  "use strict";
+
+  var shortLevelName = function() {
+    return function(levelName) {
+      if (levelName != null) {
+        return levelName.replace('Junior Varsity', 'JV').replace(/\s+/g, ' ').trim();
+      }
+
+      return null;
+    };
+  };
+
+  angular.module('uniform.filters.levels')
+    .filter('shortLevelName', shortLevelName);
+})();
+
+(function() {
+  "use strict";
+
+  var ordinalSuffix = function() {
+    return function(number) {
+      if (number.toString().slice(-1) == '1') {
+        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
+          number.toString() + 'th' : number.toString() + 'st';
+      } else if (number.toString().slice(-1) == '2') {
+        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
+          number.toString() + 'th' : number.toString() + 'nd';
+      } else if (number.toString().slice(-1) == '3') {
+        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
+          number.toString() + 'th' : number.toString() + 'rd';
+      } else {
+        return number.toString() + 'th'
+      }
+    };
+  };
+
+  angular.module('uniform.filters.primitives')
+    .filter('ordinalSuffix', ordinalSuffix);
+})();
+
+(function() {
 
   'use strict';
 
@@ -490,59 +523,31 @@
 
 })();
 
+(function() {
+  "use strict";
+
+  angular.module('uniform.filters.teams', []);
+})();
 
 (function() {
+  "use strict";
 
-  LogoutButtonController.$inject = ['$q', '$window'];
+  angular.module('uniform.filters.schools', []);
+})();
 
-  function LogoutButtonController($q, $window) {
-    this.$q = $q;
-    this.$window = $window;
-  }
+(function() {
+  "use strict";
 
-  LogoutButtonController.prototype.setScope = function($scope) {
-    $scope.redirect || ($scope.redirect = '/');
-    $scope.cookie || ($scope.cookie = 'access_token');
-    $scope.cookieDomain || ($scope.cookieDomain = '*');
-    $scope.action || ($scope.action = function() {});
-    this.$scope = $scope;
+  var stripHighSchool = function() {
+    return function(schoolName) {
+      if (schoolName != null) {
+        return schoolName.replace(/high school\s*$/i, '').trim();
+      }
+
+      return null;
+    };
   };
 
-  LogoutButtonController.prototype.onClick = function() {
-    var that = this,
-        args = [this.$scope.cookie],
-        redirect = (function(path) {
-          return function() {
-            that.$window.location = path;
-          };
-        })(this.$scope.redirect);
-    this.$scope.cookieDomain != '*' && (args = args.concat([{domain: this.$scope.cookieDomain}]));
-
-    return function(e) {
-      e.preventDefault();
-      Cookies.expire.apply(null, args);
-      that.$q.when(that.$scope.action()).then(redirect);
-    }
-  };
-
-  var logoutButton = {
-    scope: {
-      redirect:'@',
-      cookie: '@',
-      cookieDomain: '@',
-      action: '='
-    },
-    restrict: 'A',
-    controller: LogoutButtonController,
-    link: function($scope, elem, attrs, ctrl) {
-      ctrl.setScope($scope);
-      elem.on('click', ctrl.onClick());
-    }
-  };
-
-  angular.module('uniform.logout-button', [])
-     .directive('logoutButton', function() {
-       return logoutButton;
-     });
-
+  angular.module('uniform.filters.schools')
+    .filter('stripHighSchool', stripHighSchool);
 })();
