@@ -185,6 +185,53 @@
 })();
 
 (function() {
+  "use strict";
+
+  angular.module('uniform.filters.levels', []);
+})();
+
+(function() {
+  "use strict";
+
+  var shortLevelName = function() {
+    return function(levelName) {
+      if (levelName != null) {
+        return levelName.replace('Junior Varsity', 'JV').replace(/\s+/g, ' ').trim();
+      }
+
+      return null;
+    };
+  };
+
+  angular.module('uniform.filters.levels')
+    .filter('shortLevelName', shortLevelName);
+})();
+
+(function() {
+  "use strict";
+
+  var ordinalSuffix = function() {
+    return function(number) {
+      if (number.toString().slice(-1) == '1') {
+        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
+          number.toString() + 'th' : number.toString() + 'st';
+      } else if (number.toString().slice(-1) == '2') {
+        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
+          number.toString() + 'th' : number.toString() + 'nd';
+      } else if (number.toString().slice(-1) == '3') {
+        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
+          number.toString() + 'th' : number.toString() + 'rd';
+      } else {
+        return number.toString() + 'th'
+      }
+    };
+  };
+
+  angular.module('uniform.filters.primitives')
+    .filter('ordinalSuffix', ordinalSuffix);
+})();
+
+(function() {
    ActiveMenuLinkController.$inject = ['$location'];
 
   function ActiveMenuLinkController($location) {
@@ -225,6 +272,29 @@
     .directive('activeMenuLink', function() {
         return activeMenuLink;
     });
+})();
+
+(function() {
+  "use strict";
+
+  angular.module('uniform.filters.schools', []);
+})();
+
+(function() {
+  "use strict";
+
+  var stripHighSchool = function() {
+    return function(schoolName) {
+      if (schoolName != null) {
+        return schoolName.replace(/high school\s*$/i, '').trim();
+      }
+
+      return null;
+    };
+  };
+
+  angular.module('uniform.filters.schools')
+    .filter('stripHighSchool', stripHighSchool);
 })();
 
 (function() {
@@ -408,6 +478,21 @@
 
 (function() {
 
+  'use strict';
+
+  function formatTeamName() {
+    return function (team) {
+      return team.gender + ' ' + team.level + ' ' + team.sport.name;
+    }
+  }
+
+  angular.module('uniform.filters.teams', []).filter('formatTeamName', formatTeamName);
+
+})();
+
+
+(function() {
+
   LogoutButtonController.$inject = ['$q', '$window'];
 
   function LogoutButtonController($q, $window) {
@@ -461,88 +546,3 @@
      });
 
 })();
-
-(function() {
-  "use strict";
-
-  angular.module('uniform.filters.levels', []);
-})();
-
-(function() {
-  "use strict";
-
-  var shortLevelName = function() {
-    return function(levelName) {
-      if (levelName != null) {
-        return levelName.replace('Junior Varsity', 'JV').replace(/\s+/g, ' ').trim();
-      }
-
-      return null;
-    };
-  };
-
-  angular.module('uniform.filters.levels')
-    .filter('shortLevelName', shortLevelName);
-})();
-
-(function() {
-  "use strict";
-
-  var ordinalSuffix = function() {
-    return function(number) {
-      if (number.toString().slice(-1) == '1') {
-        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
-          number.toString() + 'th' : number.toString() + 'st';
-      } else if (number.toString().slice(-1) == '2') {
-        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
-          number.toString() + 'th' : number.toString() + 'nd';
-      } else if (number.toString().slice(-1) == '3') {
-        return (number.toString().length > 1 && number.toString().slice(-2, -1) == '1') ?
-          number.toString() + 'th' : number.toString() + 'rd';
-      } else {
-        return number.toString() + 'th'
-      }
-    };
-  };
-
-  angular.module('uniform.filters.primitives')
-    .filter('ordinalSuffix', ordinalSuffix);
-})();
-
-(function() {
-  "use strict";
-
-  angular.module('uniform.filters.schools', []);
-})();
-
-(function() {
-  "use strict";
-
-  var stripHighSchool = function() {
-    return function(schoolName) {
-      if (schoolName != null) {
-        return schoolName.replace(/high school\s*$/i, '').trim();
-      }
-
-      return null;
-    };
-  };
-
-  angular.module('uniform.filters.schools')
-    .filter('stripHighSchool', stripHighSchool);
-})();
-
-(function() {
-
-  'use strict';
-
-  function formatSchoolName() {
-    return function (team) {
-      return team.gender + ' ' + team.level + ' ' + team.sport.name;
-    }
-  }
-
-  angular.module('uniform.filters.teams', []).filter('formatTeamName', formatSchoolName);
-
-})();
-
