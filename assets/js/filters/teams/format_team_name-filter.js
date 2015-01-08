@@ -8,6 +8,7 @@
     }
   }
 
-  angular.module('uniform.filters.teams', []).filter('formatTeamName', formatTeamName);
+  angular.module('uniform.filters.teams')
+    .filter('formatTeamName', formatTeamName);
 
 })();

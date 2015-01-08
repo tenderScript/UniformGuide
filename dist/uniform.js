@@ -178,6 +178,12 @@
 (function() {
   "use strict";
 
+  angular.module('uniform.filters.teams', []);
+})();
+
+(function() {
+  "use strict";
+
   angular.module(
     'uniform.filters',
     ['uniform.filters.levels', 'uniform.filters.primitives', 'uniform.filters.schools', 'uniform.filters.teams']
@@ -510,6 +516,21 @@
 })();
 
 (function() {
+
+  'use strict';
+
+  function formatTeamName() {
+    return function (team) {
+      return team.gender + ' ' + team.level + ' ' + team.sport.name;
+    }
+  }
+
+  angular.module('uniform.filters.teams')
+    .filter('formatTeamName', formatTeamName);
+
+})();
+
+(function() {
   "use strict";
 
   angular.module('uniform.filters.schools', []);
@@ -530,24 +551,4 @@
 
   angular.module('uniform.filters.schools')
     .filter('stripHighSchool', stripHighSchool);
-})();
-
-(function() {
-
-  'use strict';
-
-  function formatTeamName() {
-    return function (team) {
-      return team.gender + ' ' + team.level + ' ' + team.sport.name;
-    }
-  }
-
-  angular.module('uniform.filters.teams', []).filter('formatTeamName', formatTeamName);
-
-})();
-
-(function() {
-  "use strict";
-
-  angular.module('uniform.filters.teams', []);
 })();
