@@ -191,49 +191,6 @@
 })();
 
 (function() {
-   ActiveMenuLinkController.$inject = ['$location'];
-
-  function ActiveMenuLinkController($location) {
-    this.$location = $location;
-  }
-
-  ActiveMenuLinkController.prototype.routeMatches = function(path) {
-    if (path.substr(0, 1) == '#') {
-      path = path.substr(1);
-    }
-    if (path == '/') {
-      return this.$location.path() == path;
-    }
-    return this.$location.path().substr(0, path.length) === path;
-  };
-
-  ActiveMenuLinkController.prototype.onRouteChange = function (elem, path) {
-      if (this.routeMatches(path)) {
-          elem.addClass('active');
-      } else {
-          elem.removeClass('active');
-      }
-  };
-
-  var activeMenuLink = {
-    restrict: 'A',
-    controller: ActiveMenuLinkController,
-    link: function ($scope, elem, attrs, ctrl) {
-      $scope.$on('$routeChangeSuccess', function () {
-        ctrl.onRouteChange(elem, attrs.href);
-      });
-
-      ctrl.onRouteChange(elem, attrs.href);
-    }
-  };
-
-  angular.module('uniform.active-menu-link', [])
-    .directive('activeMenuLink', function() {
-        return activeMenuLink;
-    });
-})();
-
-(function() {
 
   "use strict";
 
@@ -413,6 +370,49 @@
 })();
 
 (function() {
+   ActiveMenuLinkController.$inject = ['$location'];
+
+  function ActiveMenuLinkController($location) {
+    this.$location = $location;
+  }
+
+  ActiveMenuLinkController.prototype.routeMatches = function(path) {
+    if (path.substr(0, 1) == '#') {
+      path = path.substr(1);
+    }
+    if (path == '/') {
+      return this.$location.path() == path;
+    }
+    return this.$location.path().substr(0, path.length) === path;
+  };
+
+  ActiveMenuLinkController.prototype.onRouteChange = function (elem, path) {
+      if (this.routeMatches(path)) {
+          elem.addClass('active');
+      } else {
+          elem.removeClass('active');
+      }
+  };
+
+  var activeMenuLink = {
+    restrict: 'A',
+    controller: ActiveMenuLinkController,
+    link: function ($scope, elem, attrs, ctrl) {
+      $scope.$on('$routeChangeSuccess', function () {
+        ctrl.onRouteChange(elem, attrs.href);
+      });
+
+      ctrl.onRouteChange(elem, attrs.href);
+    }
+  };
+
+  angular.module('uniform.active-menu-link', [])
+    .directive('activeMenuLink', function() {
+        return activeMenuLink;
+    });
+})();
+
+(function() {
 
   LogoutButtonController.$inject = ['$q', '$window'];
 
@@ -516,21 +516,6 @@
 })();
 
 (function() {
-
-  'use strict';
-
-  function formatTeamName() {
-    return function (team) {
-      return team.gender + ' ' + team.level + ' ' + team.sport.name;
-    }
-  }
-
-  angular.module('uniform.filters.teams')
-    .filter('formatTeamName', formatTeamName);
-
-})();
-
-(function() {
   "use strict";
 
   angular.module('uniform.filters.schools', []);
@@ -551,4 +536,19 @@
 
   angular.module('uniform.filters.schools')
     .filter('stripHighSchool', stripHighSchool);
+})();
+
+(function() {
+
+  'use strict';
+
+  function formatTeamName() {
+    return function (team) {
+      return team.gender + ' ' + team.level + ' ' + team.sport.name;
+    }
+  }
+
+  angular.module('uniform.filters.teams')
+    .filter('formatTeamName', formatTeamName);
+
 })();
