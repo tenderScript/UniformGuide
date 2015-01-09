@@ -414,11 +414,12 @@
 
 (function() {
 
-  LogoutButtonController.$inject = ['$q', '$window'];
+  LogoutButtonController.$inject = ['$q', '$window', '$timeout'];
 
-  function LogoutButtonController($q, $window) {
+  function LogoutButtonController($q, $window, $timeout) {
     this.$q = $q;
     this.$window = $window;
+    this.$timeout = $timeout;
   }
 
   LogoutButtonController.prototype.setScope = function($scope) {
@@ -434,7 +435,9 @@
         args = [this.$scope.cookie],
         redirect = (function(path) {
           return function() {
-            that.$window.location = path;
+            return that.$timeout(function() {
+              that.$window.location = path;
+            }, 100);
           };
         })(this.$scope.redirect);
     this.$scope.cookieDomain != '*' && (args = args.concat([{domain: this.$scope.cookieDomain}]));
