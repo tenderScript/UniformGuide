@@ -4878,7 +4878,7 @@ input:disabled, text:disabled, select:disabled {
 .vnn-icon-bowling:before {
   content: 'C'; }
 
-.vnn-icon-competitive-cheer:before, .vnn-icon-sideline-cheer:before {
+.vnn-icon-competitive-cheer:before, .vnn-icon-sideline-cheer:before, .vnn-icon-pom-pon:before {
   content: 'D'; }
 
 .vnn-icon-crew:before {
