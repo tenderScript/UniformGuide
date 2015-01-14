@@ -5126,3 +5126,13 @@ input:disabled, text:disabled, select:disabled {
   background-color: #dbedf5;
   color: #3b97d3;
   border-color: #3b97d3; }
+
+/***********************************
+ * transitions applied by ngAnimate
+ ***********************************/
+.flash-message.ng-hide-add.ng-hide-add-active, .flash-message.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s; }
+
+.flash-message.ng-hide {
+  opacity: 0; }
