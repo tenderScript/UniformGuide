@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# stop on any failed command in this script
+set -e
+
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 git stash && git checkout master
