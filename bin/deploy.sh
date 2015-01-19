@@ -5,8 +5,17 @@ set -e
 
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-git stash && git checkout master
+if [ -n "$(git status --porcelain | sed 's/ *$//')" ]; then
+  HAS_CHANGES=true
+else
+  HAS_CHANGES=false
+fi
 
+if [ $HAS_CHANGES == true ]; then
+   git stash
+fi
+
+git checkout master
 git pull --ff-only upstream master
 
 mkdir -p tmp/
@@ -30,4 +39,8 @@ git add .
 git commit -m "updating docs site"
 git push upstream gh-pages
 
-git checkout $CURRENT_BRANCH && git stash pop
+git checkout $CURRENT_BRANCH
+
+if [ $HAS_CHANGES == true ]; then
+  git stash pop
+fi
