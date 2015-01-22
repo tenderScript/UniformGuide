@@ -5101,7 +5101,7 @@ input:disabled, text:disabled, select:disabled {
     position: relative;
     bottom: 15px; }
   .flash-message .flash-message-bold {
-    font-family: 'Homestead'; }
+    font-family: "Homestead", "Times New Roman", serif; }
   .flash-message .flash-message-action {
     border-bottom-style: dotted;
     border-bottom-width: 1px;
