@@ -31,7 +31,9 @@
         ctrl.onRouteChange(elem, attrs.href);
       });
 
-      ctrl.onRouteChange(elem, attrs.href);
+      attrs.$observe('href', function (value) {
+        ctrl.onRouteChange(elem, value);
+      });
     }
   };
 
