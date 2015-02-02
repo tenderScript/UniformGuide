@@ -542,6 +542,18 @@
     }
   }
 
+  &.vnn-icon-alert {
+    &:before {
+      content: '<';
+    }
+  }
+
+  &.vnn-icon-no-alert {
+    &:before {
+      content: '|';
+    }
+  }
+
   &.vnn-icon-slim-close-white {
     &:before {
       content: 'Y';

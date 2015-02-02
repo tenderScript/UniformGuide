@@ -5064,6 +5064,10 @@ input:disabled, text:disabled, select:disabled {
   content: '9'; }
 .vnn-icon-slim.vnn-icon-calendar-open:before {
   content: '_'; }
+.vnn-icon-slim.vnn-icon-alert:before {
+  content: '<'; }
+.vnn-icon-slim.vnn-icon-no-alert:before {
+  content: '|'; }
 .vnn-icon-slim.vnn-icon-slim-close-white {
   cursor: pointer; }
   .vnn-icon-slim.vnn-icon-slim-close-white:before {
