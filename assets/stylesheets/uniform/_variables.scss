@@ -59,12 +59,19 @@ $btn-primary-bg: $app-secondary-color !default;
 $btn-danger-bg: $app-cta-color !default;
 
 /* ===================== *
+ * State
+ * ===================== */
+$state-danger-text: #c03a29 !default;
+$state-danger-bg: #efdfde !default;
+$state-danger-border: darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+
+/* ===================== *
  * Flash Messages
  * ===================== */
 $flash-success-background-color: #deedd6 !default;
 $flash-success-color: #49b86f !default;
-$flash-error-background-color: #efdfde !default;
-$flash-error-color: #c03a29 !default;
+$flash-error-background-color: $state-danger-bg !default;
+$flash-error-color: $state-danger-text !default;
 $flash-comment-background-color: #fcf6e6 !default;
 $flash-comment-color: #f29c1f !default;
 $flash-info-background-color: #dbedf5 !default;
