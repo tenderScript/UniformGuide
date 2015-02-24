@@ -4917,6 +4917,9 @@ input:disabled, text:disabled, select:disabled {
 .vnn-icon-lacrosse:before {
   content: 'O'; }
 
+.vnn-icon-riflery:before {
+  content: 'Z'; }
+
 .vnn-icon-rugby:before {
   content: 'P'; }
 
