@@ -4956,6 +4956,8 @@ input:disabled, text:disabled, select:disabled {
   content: 'b'; }
 .vnn-icon-slim.vnn-icon-check:before {
   content: '{'; }
+.vnn-icon-slim.vnn-icon-metal-gear-solid:before {
+  content: '('; }
 .vnn-icon-slim.vnn-icon-minus:before {
   content: 'c'; }
 .vnn-icon-slim.vnn-icon-refresh:before {
