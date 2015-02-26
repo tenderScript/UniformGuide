@@ -206,6 +206,12 @@
     }
   }
 
+  &.vnn-icon-metal-gear-solid {
+    &:before {
+      content: '('
+    }
+  }
+
   &.vnn-icon-minus {
     &:before {
       content: 'c';
