@@ -14,8 +14,11 @@ gulp.task('js', ['clean'], function() {
   var src = [
     config.src.root + '/js/directives/uniform.js',
     config.src.root + '/js/directives/flash_message/flash_message.js',
+    config.src.root + '/js/filters/levels/levels.js',
     config.src.root + '/js/filters/primitives/primitives.js',
+    config.src.root + '/js/filters/schools/schools.js',
     config.src.root + '/js/filters/teams/teams.js',
+    config.src.root + '/js/filters/users/users.js',
     config.src.root + '/js/**/*.js',
     "!" + config.src.root + '/js/**/*-test.js'
   ];

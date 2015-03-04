@@ -10,7 +10,9 @@ var env = {
     'assets/js/directives/logout_button/*-test.js',
     'assets/js/filters/levels/*-test.js',
     'assets/js/filters/primitives/*-test.js',
-    'assets/js/filters/schools/*-test.js'
+    'assets/js/filters/schools/*-test.js',
+    'assets/js/filters/teams/*-test.js',
+    'assets/js/filters/users/*-test.js'
   ],
   test: [
     'bower_components/cookies-js/src/*.js',
@@ -21,10 +23,14 @@ var env = {
     'assets/js/filters/levels/levels.js',
     'assets/js/filters/primitives/primitives.js',
     'assets/js/filters/schools/schools.js',
+    'assets/js/filters/teams/teams.js',
+    'assets/js/filters/users/users.js',
     'assets/js/filters/filters.js',
     'assets/js/filters/levels/*.js',
     'assets/js/filters/primitives/*.js',
-    'assets/js/filters/schools/*.js'
+    'assets/js/filters/schools/*.js',
+    'assets/js/filters/teams/*.js',
+    'assets/js/filters/users/*.js'
   ],
   dist: [
     'dist/uniform.min.js'
