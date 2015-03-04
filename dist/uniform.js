@@ -172,7 +172,19 @@
 (function() {
   "use strict";
 
+  angular.module('uniform.filters.levels', []);
+})();
+
+(function() {
+  "use strict";
+
   angular.module('uniform.filters.primitives', []);
+})();
+
+(function() {
+  "use strict";
+
+  angular.module('uniform.filters.schools', []);
 })();
 
 (function() {
@@ -182,12 +194,27 @@
 })();
 
 (function() {
+
+  "use strict";
+
+  angular.module('uniform.filters.users', []);
+
+})();
+
+(function() {
   "use strict";
 
   angular.module(
     'uniform.filters',
-    ['uniform.filters.levels', 'uniform.filters.primitives', 'uniform.filters.schools', 'uniform.filters.teams']
+    [
+      'uniform.filters.levels',
+      'uniform.filters.primitives',
+      'uniform.filters.schools',
+      'uniform.filters.teams',
+      'uniform.filters.users'
+    ]
   );
+
 })();
 
 (function() {
@@ -476,12 +503,6 @@
 (function() {
   "use strict";
 
-  angular.module('uniform.filters.levels', []);
-})();
-
-(function() {
-  "use strict";
-
   var shortLevelName = function() {
     return function(levelName) {
       if (levelName != null) {
@@ -582,12 +603,6 @@
 (function() {
   "use strict";
 
-  angular.module('uniform.filters.schools', []);
-})();
-
-(function() {
-  "use strict";
-
   var stripHighSchool = function() {
     return function(schoolName) {
       if (schoolName != null) {
@@ -614,5 +629,38 @@
 
   angular.module('uniform.filters.teams')
     .filter('formatTeamName', formatTeamName);
+
+})();
+
+(function() {
+
+  'use strict';
+
+  function fullName() {
+    return function (nameObject) {
+      var nameString = '';
+
+      if (!nameObject) {
+        return nameString;
+      }
+
+      if (nameObject !== nameObject.hasOwnProperty('first') && nameObject.first) {
+        nameString = nameObject.first + ' ';
+      }
+
+      if (nameObject.hasOwnProperty('middle') && nameObject.middle) {
+        nameString = nameString + nameObject.middle + ' ';
+      }
+
+      if (nameObject.hasOwnProperty('last') && nameObject.last) {
+        nameString = nameString + nameObject.last;
+      }
+
+      return nameString.trim();
+    }
+  }
+
+  angular.module('uniform.filters.users')
+    .filter('fullName', fullName);
 
 })();
