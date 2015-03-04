@@ -5,9 +5,9 @@
   "scripts": {
     "pretest": "npm run build",
     "pretest-single-run": "npm run build",
+    "bower": "node_modules/.bin/bower install",
     "test": "node_modules/karma/bin/karma start karma.conf.js --single-run",
     "test-dev": "TEST=1 node_modules/karma/bin/karma start karma.conf.js",
-    "postinstall": "node_modules/.bin/bower install",
     "build": "node_modules/.bin/gulp build",
     "dev": "node_modules/.bin/gulp dev",
     "server": "php -S localhost:8000",
