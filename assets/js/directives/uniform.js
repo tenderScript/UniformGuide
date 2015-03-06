@@ -1,6 +1,11 @@
 (function() {
+
+  'use strict';
+
   angular.module('uniform', [
-     'uniform.logout-button',
-     'uniform.active-menu-link'
+    'uniform.active-menu-link',
+    'uniform.head-title',
+    'uniform.logout-button'
   ]);
+
 })();
