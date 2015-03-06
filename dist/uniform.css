@@ -4947,6 +4947,9 @@ input:disabled, text:disabled, select:disabled {
 .vnn-icon-water-polo:before {
   content: 'X'; }
 
+.vnn-icon-whistle:before {
+  content: 'b'; }
+
 .vnn-icon-wrestling:before {
   content: 'Y'; }
 
@@ -4986,6 +4989,8 @@ input:disabled, text:disabled, select:disabled {
   content: 'o'; }
 .vnn-icon-slim.vnn-icon-edit-box:before {
   content: 'p'; }
+.vnn-icon-slim.vnn-icon-jersey:before {
+  content: 'P'; }
 .vnn-icon-slim.vnn-icon-link:before {
   content: 'q'; }
 .vnn-icon-slim.vnn-icon-lock:before {

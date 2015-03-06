@@ -180,6 +180,12 @@
   }
 }
 
+.vnn-icon-whistle {
+  &:before {
+    content: 'b';
+  }
+}
+
 .vnn-icon-wrestling {
   &:before {
     content: 'Y';
@@ -293,6 +299,12 @@
   &.vnn-icon-edit-box {
     &:before {
       content: 'p';
+    }
+  }
+
+  &.vnn-icon-jersey {
+    &:before {
+      content: 'P';
     }
   }
 
