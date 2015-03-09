@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Filters :: Varsity News Network</title>
+  <link href="/dist/uniform.css" rel="stylesheet">
+  <link rel="stylesheet" href="/examples/demo.css"/>
+</head>
+<body>
+  <div class="container">
+    <div style="background-color: #fff; margin-top: 20px; padding: 8px">
+
+      <h1>VNN Uniform Style Guide</h1>
+
+      <h2>Filters</h2>
+
+      <ol>
+        <li><a href="#formatTeamName">formatTeamName</a></li>
+        <li><a href="#fullName">fullName</a></li>
+        <li><a href="#ordinalSuffix">ordinalSuffix</a></li>
+        <li><a href="#phoneNumber">phoneNumber</a></li>
+        <li><a href="#shortLevelName">shortLevelName</a></li>
+        <li><a href="#stripHighSchool">stripHighSchool</a></li>
+      </ol>
+
+      <div class="entry">
+        <h3 id="formatTeamName">formatTeamName</h3>
+
+        <p>
+          Formats the supplied <code>Team</code> resource as <em>gender level sport.name</em>.
+        </p>
+
+        <p>
+          Given the <code>Team</code> resource:
+        </p>
+
+        <pre>{
+  gender: 'Boys',
+  level: 'Varsity',
+  sport: {
+      name: 'Dumpster Diving'
+  }
+}</pre>
+
+        <p>The following filter:</p>
+
+        <pre><b>{{team | formatTeamName}}</b></pre>
+
+        <p>Will produce:</p>
+
+        <blockquote>Boys Varsity Dumpster Diving</blockquote>
+      </div>
+
+
+      <div class="entry">
+        <h3 id="fullName">fullName</h3>
+
+        <p>
+          Formats the supplied <code>Name</code> object as <em>[firstName] [middleName] [lastName]</em> with all pieces
+          omitted if not present or null.
+        </p>
+
+        <p>
+          Given the <code>User</code> resource:
+        </p>
+
+        <pre>{
+  id: 5,
+  name: {
+    first: 'Dexter',
+    last: 'Morgan'
+  }
+}</pre>
+
+        <p>The following filter:</p>
+
+        <pre><b>{{user.name | fullName}}</b></pre>
+
+        <p>Will produce:</p>
+
+        <blockquote>Dexter Morgan</blockquote>
+      </div>
+
+
+      <div class="entry">
+        <h3 id="ordinalSuffix">ordinalSuffix</h3>
+
+        <p>
+          Appends an ordinal suffix to a number.
+        </p>
+
+        <p>The following filter:</p>
+
+        <pre><b>{{'100' | ordinalSuffix}}</b></pre>
+
+        <p>Will produce:</p>
+
+        <blockquote>100th</blockquote>
+      </div>
+
+
+      <div class="entry">
+        <h3 id="phoneNumber">phoneNumber</h3>
+
+        <p>
+          Formats a phone number as <em>(###) ###-####</em>
+        </p>
+
+        <pre><b>{{'1234567890' | phoneNumber}}</b></pre>
+
+        <p>Will produce:</p>
+
+        <blockquote>(123) 456-7890</blockquote>
+      </div>
+
+
+      <div class="entry">
+        <h3 id="shortLevelName">shortLevelName</h3>
+
+        <p>
+          Reduces an occurrence of <em>Junior Varsity</em> in a string to <em>JV</em>.
+        </p>
+
+        <p>The following filter:</p>
+
+        <pre><b>{{'Junior Varsity Golf | shortLevelName}}</b></pre>
+
+        <p>Will produce:</p>
+
+        <blockquote>JV Golf</blockquote>
+      </div>
+
+
+      <div class="entry">
+        <h3 id="stripHighSchool">stripHighSchool</h3>
+
+        <p>
+          Strips the supplied <code>School</code> resource of <em>High School</em> when it appears at the end of the string.
+        </p>
+
+        <p>
+          Given the <code>School</code> resource:
+        </p>
+
+        <pre>{
+  name: 'Knibb High School'
+}</pre>
+
+        <p>The following filter:</p>
+
+        <pre><b>{{school | stripHighSchool}}</b></pre>
+
+        <p>Will produce:</p>
+
+        <blockquote>Knibb High School</blockquote>
+
+        <p>
+          Given the <code>School</code> resource:
+        </p>
+
+        <pre>{
+  name: 'Knibb High School for the Awesomely Gifted'
+}</pre>
+
+        <p>The following filter:</p>
+
+        <pre><b>{{school | stripHighSchool}}</b></pre>
+
+        <p>Will produce:</p>
+
+        <blockquote>Knibb High School for the Awesomely Gifted</blockquote>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
