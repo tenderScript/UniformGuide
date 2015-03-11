@@ -275,6 +275,55 @@
     });
 })();
 
+(function () {
+
+  'use strict';
+
+  var headTitle = {
+    restrict: 'A',
+    link: function ($scope, elem) {
+      var defaultTitle = elem.text();
+
+      $scope.$on('$routeChangeSuccess', function () {
+        elem.text(defaultTitle);
+      });
+
+      $scope.$watch('headTitle', function (value) {
+        if (!value) {
+          elem.text(defaultTitle);
+        } else {
+          elem.text(value + (defaultTitle ? ' - ' + defaultTitle : ''));
+        }
+      });
+    }
+  };
+
+  angular.module('uniform.head-title')
+    .directive('headTitle', function () {
+      return headTitle;
+    });
+
+})();
+
+(function () {
+
+  'use strict';
+
+  HeadTitleService.$inject = ['$rootScope'];
+
+  function HeadTitleService($rootScope) {
+    this.$rootScope = $rootScope;
+  }
+
+  HeadTitleService.prototype.setTitle = function (title) {
+    this.$rootScope.headTitle = title;
+  };
+
+  angular.module('uniform.head-title')
+    .service('HeadTitleService', HeadTitleService)
+
+})();
+
 (function() {
 
   "use strict";
@@ -513,55 +562,6 @@
 
 })();
 
-(function () {
-
-  'use strict';
-
-  var headTitle = {
-    restrict: 'A',
-    link: function ($scope, elem) {
-      var defaultTitle = elem.text();
-
-      $scope.$on('$routeChangeSuccess', function () {
-        elem.text(defaultTitle);
-      });
-
-      $scope.$watch('headTitle', function (value) {
-        if (!value) {
-          elem.text(defaultTitle);
-        } else {
-          elem.text(value + (defaultTitle ? ' - ' + defaultTitle : ''));
-        }
-      });
-    }
-  };
-
-  angular.module('uniform.head-title')
-    .directive('headTitle', function () {
-      return headTitle;
-    });
-
-})();
-
-(function () {
-
-  'use strict';
-
-  HeadTitleService.$inject = ['$rootScope'];
-
-  function HeadTitleService($rootScope) {
-    this.$rootScope = $rootScope;
-  }
-
-  HeadTitleService.prototype.setTitle = function (title) {
-    this.$rootScope.headTitle = title;
-  };
-
-  angular.module('uniform.head-title')
-    .service('HeadTitleService', HeadTitleService)
-
-})();
-
 (function() {
   "use strict";
 
@@ -663,6 +663,21 @@
 })();
 
 (function() {
+
+  'use strict';
+
+  function formatTeamName() {
+    return function (team) {
+      return team.gender + ' ' + team.level + ' ' + team.sport.name;
+    }
+  }
+
+  angular.module('uniform.filters.teams')
+    .filter('formatTeamName', formatTeamName);
+
+})();
+
+(function() {
   "use strict";
 
   var stripHighSchool = function() {
@@ -677,21 +692,6 @@
 
   angular.module('uniform.filters.schools')
     .filter('stripHighSchool', stripHighSchool);
-})();
-
-(function() {
-
-  'use strict';
-
-  function formatTeamName() {
-    return function (team) {
-      return team.gender + ' ' + team.level + ' ' + team.sport.name;
-    }
-  }
-
-  angular.module('uniform.filters.teams')
-    .filter('formatTeamName', formatTeamName);
-
 })();
 
 (function() {
