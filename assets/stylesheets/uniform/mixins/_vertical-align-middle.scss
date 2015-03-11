@@ -5,3 +5,11 @@
   -ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
 }
+
+@mixin undo-vertical-align-middle {
+  position: inherit;
+  top: inherit;
+  transform: inherit;
+  -ms-transform: inherit;
+  -webkit-transform: inherit;
+}

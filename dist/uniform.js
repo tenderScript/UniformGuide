@@ -683,6 +683,21 @@
 
   'use strict';
 
+  function formatTeamName() {
+    return function (team) {
+      return team.gender + ' ' + team.level + ' ' + team.sport.name;
+    }
+  }
+
+  angular.module('uniform.filters.teams')
+    .filter('formatTeamName', formatTeamName);
+
+})();
+
+(function() {
+
+  'use strict';
+
   function fullName() {
     return function (nameObject) {
       var nameString = '';
@@ -709,20 +724,5 @@
 
   angular.module('uniform.filters.users')
     .filter('fullName', fullName);
-
-})();
-
-(function() {
-
-  'use strict';
-
-  function formatTeamName() {
-    return function (team) {
-      return team.gender + ' ' + team.level + ' ' + team.sport.name;
-    }
-  }
-
-  angular.module('uniform.filters.teams')
-    .filter('formatTeamName', formatTeamName);
 
 })();
