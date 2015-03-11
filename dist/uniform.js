@@ -454,6 +454,55 @@
 
 })();
 
+(function () {
+
+  'use strict';
+
+  var headTitle = {
+    restrict: 'A',
+    link: function ($scope, elem) {
+      var defaultTitle = elem.text();
+
+      $scope.$on('$routeChangeSuccess', function () {
+        elem.text(defaultTitle);
+      });
+
+      $scope.$watch('headTitle', function (value) {
+        if (!value) {
+          elem.text(defaultTitle);
+        } else {
+          elem.text(value + (defaultTitle ? ' - ' + defaultTitle : ''));
+        }
+      });
+    }
+  };
+
+  angular.module('uniform.head-title')
+    .directive('headTitle', function () {
+      return headTitle;
+    });
+
+})();
+
+(function () {
+
+  'use strict';
+
+  HeadTitleService.$inject = ['$rootScope'];
+
+  function HeadTitleService($rootScope) {
+    this.$rootScope = $rootScope;
+  }
+
+  HeadTitleService.prototype.setTitle = function (title) {
+    this.$rootScope.headTitle = title;
+  };
+
+  angular.module('uniform.head-title')
+    .service('HeadTitleService', HeadTitleService)
+
+})();
+
 (function() {
 
   LogoutButtonController.$inject = ['$q', '$window', '$timeout'];
@@ -510,55 +559,6 @@
      .directive('logoutButton', function() {
        return logoutButton;
      });
-
-})();
-
-(function () {
-
-  'use strict';
-
-  var headTitle = {
-    restrict: 'A',
-    link: function ($scope, elem) {
-      var defaultTitle = elem.text();
-
-      $scope.$on('$routeChangeSuccess', function () {
-        elem.text(defaultTitle);
-      });
-
-      $scope.$watch('headTitle', function (value) {
-        if (!value) {
-          elem.text(defaultTitle);
-        } else {
-          elem.text(value + (defaultTitle ? ' - ' + defaultTitle : ''));
-        }
-      });
-    }
-  };
-
-  angular.module('uniform.head-title')
-    .directive('headTitle', function () {
-      return headTitle;
-    });
-
-})();
-
-(function () {
-
-  'use strict';
-
-  HeadTitleService.$inject = ['$rootScope'];
-
-  function HeadTitleService($rootScope) {
-    this.$rootScope = $rootScope;
-  }
-
-  HeadTitleService.prototype.setTitle = function (title) {
-    this.$rootScope.headTitle = title;
-  };
-
-  angular.module('uniform.head-title')
-    .service('HeadTitleService', HeadTitleService)
 
 })();
 
