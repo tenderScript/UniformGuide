@@ -1,15 +1,2 @@
-@mixin vertical-align-middle {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-}
-
-@mixin undo-vertical-align-middle {
-  position: inherit;
-  top: inherit;
-  transform: inherit;
-  -ms-transform: inherit;
-  -webkit-transform: inherit;
-}
+@import "mixins/undo-vertical-align-middle";
+@import "mixins/vertical-align-middle";
