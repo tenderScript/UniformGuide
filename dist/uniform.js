@@ -370,6 +370,7 @@
     this.text = text;
     this.data = data;
     this.hidden = false;
+    this.clearTimeout();
     return this;
   };
 
@@ -435,8 +436,18 @@
    * @returns {FlashMessage}
    */
   FlashMessage.prototype.timeout = function(ms) {
-    this.$timeout(angular.bind(this, this.hide), ms);
+    this.promise = this.$timeout(angular.bind(this, this.hide), ms);
     return this;
+  };
+
+  /**
+   * Clear any current timeouts.
+   */
+  FlashMessage.prototype.clearTimeout = function() {
+    if (this.promise) {
+      this.$timeout.cancel(this.promise);
+      delete this.promise;
+    }
   };
 
   function FlashMessageProvider() {}

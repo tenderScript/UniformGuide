@@ -10,9 +10,10 @@ describe('FlashMessage', function() {
     });
   }));
 
-  beforeEach(inject(function(FlashMessage, $timeout) {
+  beforeEach(inject(function(FlashMessage, $timeout, $q) {
     this.service = FlashMessage;
     this.$timeout = $timeout;
+    this.$q = $q;
   }));
 
   describe('.message()', function() {
@@ -38,6 +39,12 @@ describe('FlashMessage', function() {
       this.service.warning('warn rad');
       expect(this.service.cssClass).toBe('warning');
       expect(this.service.text).toBe('warn rad');
+    });
+
+    it('should clear a registered timeout promise', function() {
+      this.service.promise = this.$q.when('value');
+      this.service.message('success', 'This is a success message!');
+      expect(this.service.promise).toBeUndefined();
     });
 
     it('should set the hidden state to false', function() {
@@ -96,6 +103,11 @@ describe('FlashMessage', function() {
       this.service.timeout(100);
       this.$timeout.flush();
       expect(this.service.hidden).toBe(true);
+    });
+
+    it('should set a promise on the service', function () {
+      this.service.timeout(100);
+      expect(this.service.promise).not.toBeUndefined();
     });
   });
 });
