@@ -17,6 +17,7 @@ gulp.task('js', ['clean'], function() {
     config.src.root + '/js/directives/head_title/head_title.js',
     config.src.root + '/js/filters/levels/levels.js',
     config.src.root + '/js/filters/primitives/primitives.js',
+    config.src.root + '/js/filters/schools/seasons.js',
     config.src.root + '/js/filters/schools/schools.js',
     config.src.root + '/js/filters/teams/teams.js',
     config.src.root + '/js/filters/users/users.js',

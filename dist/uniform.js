@@ -222,6 +222,7 @@
     [
       'uniform.filters.levels',
       'uniform.filters.primitives',
+      'uniform.filters.seasons',
       'uniform.filters.schools',
       'uniform.filters.teams',
       'uniform.filters.users'
@@ -273,6 +274,55 @@
     .directive('activeMenuLink', function() {
         return activeMenuLink;
     });
+})();
+
+(function () {
+
+  'use strict';
+
+  var headTitle = {
+    restrict: 'A',
+    link: function ($scope, elem) {
+      var defaultTitle = elem.text();
+
+      $scope.$on('$routeChangeSuccess', function () {
+        elem.text(defaultTitle);
+      });
+
+      $scope.$watch('headTitle', function (value) {
+        if (!value) {
+          elem.text(defaultTitle);
+        } else {
+          elem.text(value + (defaultTitle ? ' - ' + defaultTitle : ''));
+        }
+      });
+    }
+  };
+
+  angular.module('uniform.head-title')
+    .directive('headTitle', function () {
+      return headTitle;
+    });
+
+})();
+
+(function () {
+
+  'use strict';
+
+  HeadTitleService.$inject = ['$rootScope'];
+
+  function HeadTitleService($rootScope) {
+    this.$rootScope = $rootScope;
+  }
+
+  HeadTitleService.prototype.setTitle = function (title) {
+    this.$rootScope.headTitle = title;
+  };
+
+  angular.module('uniform.head-title')
+    .service('HeadTitleService', HeadTitleService)
+
 })();
 
 (function() {
@@ -465,55 +515,6 @@
 
 })();
 
-(function () {
-
-  'use strict';
-
-  var headTitle = {
-    restrict: 'A',
-    link: function ($scope, elem) {
-      var defaultTitle = elem.text();
-
-      $scope.$on('$routeChangeSuccess', function () {
-        elem.text(defaultTitle);
-      });
-
-      $scope.$watch('headTitle', function (value) {
-        if (!value) {
-          elem.text(defaultTitle);
-        } else {
-          elem.text(value + (defaultTitle ? ' - ' + defaultTitle : ''));
-        }
-      });
-    }
-  };
-
-  angular.module('uniform.head-title')
-    .directive('headTitle', function () {
-      return headTitle;
-    });
-
-})();
-
-(function () {
-
-  'use strict';
-
-  HeadTitleService.$inject = ['$rootScope'];
-
-  function HeadTitleService($rootScope) {
-    this.$rootScope = $rootScope;
-  }
-
-  HeadTitleService.prototype.setTitle = function (title) {
-    this.$rootScope.headTitle = title;
-  };
-
-  angular.module('uniform.head-title')
-    .service('HeadTitleService', HeadTitleService)
-
-})();
-
 (function() {
 
   LogoutButtonController.$inject = ['$q', '$window', '$timeout'];
@@ -694,14 +695,24 @@
 
   'use strict';
 
-  function formatTeamName() {
-    return function (team) {
-      return team.gender + ' ' + team.level + ' ' + team.sport.name;
-    }
+  angular.module('uniform.filters.seasons', []);
+})();
+
+(function() {
+
+  'use strict';
+
+  function sortSeasonsByName() {
+    var order = ['Fall', 'Winter', 'Spring'];
+    return function(items, reverse) {
+      var ordered = _.intersection(order, items);
+
+      return reverse ? ordered.reverse() : ordered;
+    };
   }
 
-  angular.module('uniform.filters.teams')
-    .filter('formatTeamName', formatTeamName);
+  angular.module('uniform.filters.seasons')
+    .filter('sortSeasonsByName', sortSeasonsByName);
 
 })();
 
@@ -735,5 +746,20 @@
 
   angular.module('uniform.filters.users')
     .filter('fullName', fullName);
+
+})();
+
+(function() {
+
+  'use strict';
+
+  function formatTeamName() {
+    return function (team) {
+      return team.gender + ' ' + team.level + ' ' + team.sport.name;
+    }
+  }
+
+  angular.module('uniform.filters.teams')
+    .filter('formatTeamName', formatTeamName);
 
 })();

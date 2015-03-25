@@ -14,7 +14,8 @@
   ],
   "dependencies": {
     "bootstrap-sass-official": "~3.3.0",
-    "angular-multiselect": "https://github.com/varsitynewsnetwork/angular-multiselect.git"
+    "angular-multiselect": "https://github.com/varsitynewsnetwork/angular-multiselect.git",
+    "lodash": "~3.5.0"
   },
   "devDependencies": {
     "angular": "~1.3.4",
