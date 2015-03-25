@@ -3,7 +3,7 @@
  */
 var env = {
   all: [
-    'bower_components/lodash/lodash.js',
+    'bower_components/lodash/dist/lodash.js',
     'bower_components/angular/angular.js',
     'bower_components/angular-*/angular-*.js',
     'assets/js/directives/active_menu_link/*-test.js',

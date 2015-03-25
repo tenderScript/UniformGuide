@@ -675,6 +675,32 @@
 })();
 
 (function() {
+
+  'use strict';
+
+  angular.module('uniform.filters.seasons', []);
+})();
+
+(function() {
+
+  'use strict';
+
+  function sortSeasonsByName() {
+    var order = ['Fall', 'Winter', 'Spring', 'Year-Round'];
+
+    return function(items, reverse) {
+      var ordered = _.intersection(order, items);
+
+      return reverse ? ordered.reverse() : ordered;
+    };
+  }
+
+  angular.module('uniform.filters.seasons')
+    .filter('sortSeasonsByName', sortSeasonsByName);
+
+})();
+
+(function() {
   "use strict";
 
   var stripHighSchool = function() {
@@ -695,24 +721,14 @@
 
   'use strict';
 
-  angular.module('uniform.filters.seasons', []);
-})();
-
-(function() {
-
-  'use strict';
-
-  function sortSeasonsByName() {
-    var order = ['Fall', 'Winter', 'Spring'];
-    return function(items, reverse) {
-      var ordered = _.intersection(order, items);
-
-      return reverse ? ordered.reverse() : ordered;
-    };
+  function formatTeamName() {
+    return function (team) {
+      return team.gender + ' ' + team.level + ' ' + team.sport.name;
+    }
   }
 
-  angular.module('uniform.filters.seasons')
-    .filter('sortSeasonsByName', sortSeasonsByName);
+  angular.module('uniform.filters.teams')
+    .filter('formatTeamName', formatTeamName);
 
 })();
 
@@ -746,20 +762,5 @@
 
   angular.module('uniform.filters.users')
     .filter('fullName', fullName);
-
-})();
-
-(function() {
-
-  'use strict';
-
-  function formatTeamName() {
-    return function (team) {
-      return team.gender + ' ' + team.level + ' ' + team.sport.name;
-    }
-  }
-
-  angular.module('uniform.filters.teams')
-    .filter('formatTeamName', formatTeamName);
 
 })();
