@@ -232,100 +232,6 @@
 })();
 
 (function() {
-   ActiveMenuLinkController.$inject = ['$location'];
-
-  function ActiveMenuLinkController($location) {
-    this.$location = $location;
-  }
-
-  ActiveMenuLinkController.prototype.routeMatches = function(path) {
-    if (path.substr(0, 1) == '#') {
-      path = path.substr(1);
-    }
-    if (path == '/') {
-      return this.$location.path() == path;
-    }
-    return this.$location.path().substr(0, path.length) === path;
-  };
-
-  ActiveMenuLinkController.prototype.onRouteChange = function (elem, path) {
-      if (this.routeMatches(path)) {
-          elem.addClass('active');
-      } else {
-          elem.removeClass('active');
-      }
-  };
-
-  var activeMenuLink = {
-    restrict: 'A',
-    controller: ActiveMenuLinkController,
-    link: function ($scope, elem, attrs, ctrl) {
-      $scope.$on('$routeChangeSuccess', function () {
-        ctrl.onRouteChange(elem, attrs.href);
-      });
-
-      attrs.$observe('href', function (value) {
-        ctrl.onRouteChange(elem, value);
-      });
-    }
-  };
-
-  angular.module('uniform.active-menu-link', [])
-    .directive('activeMenuLink', function() {
-        return activeMenuLink;
-    });
-})();
-
-(function () {
-
-  'use strict';
-
-  var headTitle = {
-    restrict: 'A',
-    link: function ($scope, elem) {
-      var defaultTitle = elem.text();
-
-      $scope.$on('$routeChangeSuccess', function () {
-        elem.text(defaultTitle);
-      });
-
-      $scope.$watch('headTitle', function (value) {
-        if (!value) {
-          elem.text(defaultTitle);
-        } else {
-          elem.text(value + (defaultTitle ? ' - ' + defaultTitle : ''));
-        }
-      });
-    }
-  };
-
-  angular.module('uniform.head-title')
-    .directive('headTitle', function () {
-      return headTitle;
-    });
-
-})();
-
-(function () {
-
-  'use strict';
-
-  HeadTitleService.$inject = ['$rootScope'];
-
-  function HeadTitleService($rootScope) {
-    this.$rootScope = $rootScope;
-  }
-
-  HeadTitleService.prototype.setTitle = function (title) {
-    this.$rootScope.headTitle = title;
-  };
-
-  angular.module('uniform.head-title')
-    .service('HeadTitleService', HeadTitleService)
-
-})();
-
-(function() {
 
   "use strict";
 
@@ -513,6 +419,100 @@
   angular.module('uniform.flash-message')
      .provider('FlashMessage', FlashMessageProvider);
 
+})();
+
+(function () {
+
+  'use strict';
+
+  var headTitle = {
+    restrict: 'A',
+    link: function ($scope, elem) {
+      var defaultTitle = elem.text();
+
+      $scope.$on('$routeChangeSuccess', function () {
+        elem.text(defaultTitle);
+      });
+
+      $scope.$watch('headTitle', function (value) {
+        if (!value) {
+          elem.text(defaultTitle);
+        } else {
+          elem.text(value + (defaultTitle ? ' - ' + defaultTitle : ''));
+        }
+      });
+    }
+  };
+
+  angular.module('uniform.head-title')
+    .directive('headTitle', function () {
+      return headTitle;
+    });
+
+})();
+
+(function () {
+
+  'use strict';
+
+  HeadTitleService.$inject = ['$rootScope'];
+
+  function HeadTitleService($rootScope) {
+    this.$rootScope = $rootScope;
+  }
+
+  HeadTitleService.prototype.setTitle = function (title) {
+    this.$rootScope.headTitle = title;
+  };
+
+  angular.module('uniform.head-title')
+    .service('HeadTitleService', HeadTitleService)
+
+})();
+
+(function() {
+   ActiveMenuLinkController.$inject = ['$location'];
+
+  function ActiveMenuLinkController($location) {
+    this.$location = $location;
+  }
+
+  ActiveMenuLinkController.prototype.routeMatches = function(path) {
+    if (path.substr(0, 1) == '#') {
+      path = path.substr(1);
+    }
+    if (path == '/') {
+      return this.$location.path() == path;
+    }
+    return this.$location.path().substr(0, path.length) === path;
+  };
+
+  ActiveMenuLinkController.prototype.onRouteChange = function (elem, path) {
+      if (this.routeMatches(path)) {
+          elem.addClass('active');
+      } else {
+          elem.removeClass('active');
+      }
+  };
+
+  var activeMenuLink = {
+    restrict: 'A',
+    controller: ActiveMenuLinkController,
+    link: function ($scope, elem, attrs, ctrl) {
+      $scope.$on('$routeChangeSuccess', function () {
+        ctrl.onRouteChange(elem, attrs.href);
+      });
+
+      attrs.$observe('href', function (value) {
+        ctrl.onRouteChange(elem, value);
+      });
+    }
+  };
+
+  angular.module('uniform.active-menu-link', [])
+    .directive('activeMenuLink', function() {
+        return activeMenuLink;
+    });
 })();
 
 (function() {
