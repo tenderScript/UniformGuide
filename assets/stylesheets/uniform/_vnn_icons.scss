@@ -1,4 +1,4 @@
-.vnn-icon {
+.vnn-icon, .vi {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -9,7 +9,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  &.vnn-icon-slim {
+  &.vnn-icon-slim, &.vis {
     font-family: 'Vnn-Slim';
   }
 }
@@ -192,7 +192,7 @@
   }
 }
 
-.vnn-icon-slim {
+.vnn-icon-slim, .vis {
 
   &.vnn-icon-plus {
     &:before {
@@ -557,6 +557,12 @@
   &.vnn-icon-contact-add {
     &:before {
       content: '9';
+    }
+  }
+
+  &.vnn-icon-paper-airplane, &.vi-paper-airplane {
+    &:before {
+      content: '`';
     }
   }
 
