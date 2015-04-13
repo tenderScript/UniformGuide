@@ -14,3 +14,9 @@ gulp.task('sass', ['clean'], function() {
     .pipe(minifyCss())
     .pipe(gulp.dest(config.dist.root));
 });
+
+gulp.task('guide', ['clean'], function() {
+  gulp.src([config.src.root + '/stylesheets/guide.scss'])
+    .pipe(sass(config.sass))
+    .pipe(gulp.dest(config.dist.root));
+});

@@ -1,0 +1,19 @@
+html,
+body {
+    background-color: #ecf1f2;
+}
+body {padding-top: 60px}
+
+header {text-align: center}
+
+.center-block {
+    float:none;
+}
+
+table.example-table-icons {width: 100%}
+table.example-table-icons i {font-size: 2em}
+table.example-table-icons td {padding: 8px; vertical-align: middle}
+
+ul li {
+  display: inline;
+}

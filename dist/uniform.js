@@ -232,6 +232,51 @@
 })();
 
 (function() {
+   ActiveMenuLinkController.$inject = ['$location'];
+
+  function ActiveMenuLinkController($location) {
+    this.$location = $location;
+  }
+
+  ActiveMenuLinkController.prototype.routeMatches = function(path) {
+    if (path.substr(0, 1) == '#') {
+      path = path.substr(1);
+    }
+    if (path == '/') {
+      return this.$location.path() == path;
+    }
+    return this.$location.path().substr(0, path.length) === path;
+  };
+
+  ActiveMenuLinkController.prototype.onRouteChange = function (elem, path) {
+      if (this.routeMatches(path)) {
+          elem.addClass('active');
+      } else {
+          elem.removeClass('active');
+      }
+  };
+
+  var activeMenuLink = {
+    restrict: 'A',
+    controller: ActiveMenuLinkController,
+    link: function ($scope, elem, attrs, ctrl) {
+      $scope.$on('$routeChangeSuccess', function () {
+        ctrl.onRouteChange(elem, attrs.href);
+      });
+
+      attrs.$observe('href', function (value) {
+        ctrl.onRouteChange(elem, value);
+      });
+    }
+  };
+
+  angular.module('uniform.active-menu-link', [])
+    .directive('activeMenuLink', function() {
+        return activeMenuLink;
+    });
+})();
+
+(function() {
 
   "use strict";
 
@@ -471,51 +516,6 @@
 })();
 
 (function() {
-   ActiveMenuLinkController.$inject = ['$location'];
-
-  function ActiveMenuLinkController($location) {
-    this.$location = $location;
-  }
-
-  ActiveMenuLinkController.prototype.routeMatches = function(path) {
-    if (path.substr(0, 1) == '#') {
-      path = path.substr(1);
-    }
-    if (path == '/') {
-      return this.$location.path() == path;
-    }
-    return this.$location.path().substr(0, path.length) === path;
-  };
-
-  ActiveMenuLinkController.prototype.onRouteChange = function (elem, path) {
-      if (this.routeMatches(path)) {
-          elem.addClass('active');
-      } else {
-          elem.removeClass('active');
-      }
-  };
-
-  var activeMenuLink = {
-    restrict: 'A',
-    controller: ActiveMenuLinkController,
-    link: function ($scope, elem, attrs, ctrl) {
-      $scope.$on('$routeChangeSuccess', function () {
-        ctrl.onRouteChange(elem, attrs.href);
-      });
-
-      attrs.$observe('href', function (value) {
-        ctrl.onRouteChange(elem, value);
-      });
-    }
-  };
-
-  angular.module('uniform.active-menu-link', [])
-    .directive('activeMenuLink', function() {
-        return activeMenuLink;
-    });
-})();
-
-(function() {
 
   LogoutButtonController.$inject = ['$q', '$window', '$timeout'];
 
@@ -675,6 +675,23 @@
 })();
 
 (function() {
+  "use strict";
+
+  var stripHighSchool = function() {
+    return function(schoolName) {
+      if (schoolName != null) {
+        return schoolName.replace(/high school\s*$/i, '').trim();
+      }
+
+      return null;
+    };
+  };
+
+  angular.module('uniform.filters.schools')
+    .filter('stripHighSchool', stripHighSchool);
+})();
+
+(function() {
 
   'use strict';
 
@@ -698,23 +715,6 @@
   angular.module('uniform.filters.seasons')
     .filter('sortSeasonsByName', sortSeasonsByName);
 
-})();
-
-(function() {
-  "use strict";
-
-  var stripHighSchool = function() {
-    return function(schoolName) {
-      if (schoolName != null) {
-        return schoolName.replace(/high school\s*$/i, '').trim();
-      }
-
-      return null;
-    };
-  };
-
-  angular.module('uniform.filters.schools')
-    .filter('stripHighSchool', stripHighSchool);
 })();
 
 (function() {

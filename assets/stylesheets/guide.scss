@@ -1,0 +1,47 @@
+@import "uniform";
+
+
+/* ===================== *
+ * Tender SCSS
+ * ===================== */
+
+body {
+  overflow: hidden;
+  padding-top: 0px !important ;
+}
+
+.nav {
+  height: 70px;
+  background-color: $app-primary-color;
+}
+
+.subnav {
+  border-top: 3px solid $app-background-color;
+  padding-top: 10px;
+  color: $app-copy-color;
+  background-color: $app-ribbon-color;
+}
+
+.subnav ul li {
+  font-size: 14px;
+  padding-left: 10px;
+  font-family: $subheading-font;
+  color: $app-inverted-copy-color;
+}
+
+.top {
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  background-color: $app-ribbon-color;
+  color: $app-inverted-copy-color;
+}
+
+.top a {
+  color: $app-inverted-copy-color;
+  text-decoration: none;
+}
+
+.display_img {
+  padding-top: 15px;
+}
