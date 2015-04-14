@@ -14,26 +14,27 @@
 </head>
 <body>
 
-  <div class="row nav">
+  <div id="nav" class="row nav">
   </div>
 
   <div class="row subnav">
     <div class="col-lg-8"></div>
     <div class="col-lg-4 col-sm-1 col-xs-1">
       <ul>
-        <li>Colors</a></li>
-        <li>Text</li>
-        <li>Icons</li>
-        <li>Buttons</li>
-        <li>Messages</li>
-        <li>Cards</li>
-        <li>Forms</li>
+        <a href="#colors"><li>Colors</li></a>
+        <a href="#type"><li>Type</li></a>
+        <a href="#icons"><li>Icons</li></a>
+        <a href="#buttons"><li>Buttons</li></a>
+        <a href="#messages"><li>Messages</li></a>
+        <a href="#cards"><li>Cards</li></a>
+        <a href="#forms"><li>Forms</li></a>
       </ul>
     </div>
   </div>
 
-  <div class="col-sm-1 col-sm-offset-9 text-center top">
-    <a href="#nav"><i class="vnn-icon vnn-icon-slim vnn-icon-chevron-up"></i>
+  <div class="col-sm-1 col-sm-offset-10 text-center top">
+    <a href="#nav">
+      <i class="vnn-icon vnn-icon-slim vnn-icon-chevron-up"></i>
       Top
     </a>
   </div>
@@ -45,14 +46,299 @@
         Use this as refrence guide when communicating with your fellow designers/developers!
       </p>
     </div>
-
-      <div class="col-lg-4 col-lg-offset-4 display_img">
-        <img src="images/display.png">
-      </div>
+    <div class="col-lg-4 col-lg-offset-4 display_img">
+      <img src="images/display.png">
+    </div>
   </div>
 
-  <div class="row colors">
-    <div cla
+  <div class="row colors" id="colors">
+    <div class="text-center">
+      <h1 id="title">Colors</h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1">
+        <div class="color_items">
+          <p class="text-center colors_title">App Colors</p>
+          <div class="col-lg-2">
+            <div class="cta_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>CTA Color</span><br>
+                #c03b2a<br>
+                $app-cta-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="background_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Background</span><br>
+                #ecf1f2<br>
+                $app-background-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="ribbon_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Ribbon</span><br>
+                #b5bfcc<br>
+                $app-ribbon-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="primary_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Primary</span><br>
+                #2980b9<br>
+                $app-primary-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="secondary_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Secondary</span><br>
+                #3498db<br>
+                $app-secondary-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="info_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Info</span><br>
+                #aedbf5<br>
+                $app-info-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="nav_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Nav</span><br>
+                #2c3e50<br>
+                $app-nav-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="subnav_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Sub Nav</span><br>
+                #1d2a35<br>
+                $app-sub-nav-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="copy_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Copy</span><br>
+                #2c3e50<br>
+                $app-copy-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="inverted_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Inverted Copy</span><br>
+                #ffffff<br>
+                $app-inverted-copy-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="action_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Secondary Action</span><br>
+                #4eb96e<br>
+                $app-secondary-action-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="rollover_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Rollover</span><br>
+                #3d5771<br>
+                $app-rollover-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="flyout_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Flyout</span><br>
+                #5c6373<br>
+                $app-flyout-color<br>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="icon_color"></div>
+            <div class="color_label">
+              <p class="text-center">
+                <span>Icon</span><br>
+                #939da5<br>
+                $app-sport-icon-color<br>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Grays -->
+
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="color_items">
+        <p class="text-center colors_title">Grays</p>
+        <div class="col-lg-2">
+          <div class="graydarker_color"></div>
+          <div class="color_label">
+            <p class="text-center">
+              <span>Gray Darker</span><br>
+              #939da5<br>
+              $gray-darker<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <div class="graydark_color"></div>
+          <div class="color_label">
+            <p class="text-center">
+              <span>Gray Dark</span><br>
+              #b5bfcc<br>
+              $gray-dark<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <div class="gray_color"></div>
+          <div class="color_label">
+            <p class="text-center">
+              <span>Gray</span><br>
+              #dee2e8<br>
+              $gray<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <div class="graylight_color"></div>
+          <div class="color_label">
+            <p class="text-center">
+              <span>Gray Light</span><br>
+              #ecf0f0<br>
+              $gray-light<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <div class="graylighter_color"></div>
+          <div class="color_label">
+            <p class="text-center">
+              <span>Gray Lighter</span><br>
+              #f8f9fb<br>
+              $gray-lighter<br>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<!-- Typography -->
+
+  <div class="row text-center type" id="type">
+    <h1>Typography</h1>
+
+    <div class="col-lg-6 col-lg-offset-3">
+      <div class="type_items">
+        <p class="text-center type_title">Grays</p>
+        <div class="col-lg-3">
+          <div class="graydarker_color">Aa</div>
+          <div class="type_label">
+            <p class="text-center">
+              <span>Roboto Light</span><br>
+              14px<br>
+              font-family: 'Roboto Light'<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="type_bg">Aa</div>
+          <div class="type_label">
+            <p class="text-center">
+              <span>Roboto Reg</span><br>
+              14px<br>
+              font-family: 'Roboto'<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="type_bg">Aa</div>
+          <div class="type_label">
+            <p class="text-center">
+              <span>Roboto Bold</span><br>
+              14px<br>
+              font-family: 'Roboto'<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="type_bg">Aa</div>
+          <div class="type_label">
+            <p class="text-center">
+              <span>Homestead</span><br>
+              36px<br>
+              font-family: 'Homestead'<br>
+            </p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
 
 </body>
 </html>

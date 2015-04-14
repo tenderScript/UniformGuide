@@ -5422,9 +5422,15 @@ input:disabled, text:disabled, select:disabled {
  * Tender SCSS
  * ===================== */
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   padding-top: 0px !important; }
 
+#title {
+  color: white; }
+
+/* ===================== *
+ * Navigation
+ * ===================== */
 .nav {
   height: 70px;
   background-color: #2980b9; }
@@ -5441,16 +5447,220 @@ body {
   font-family: "Roboto Light", Helvetia, Arial, sans-serif;
   color: #ffffff; }
 
+/* ===================== *
+ * Back To Top Button
+ * ===================== */
 .top {
   padding: 10px;
   position: fixed;
   bottom: 0;
   background-color: #b5bfcc;
-  color: #ffffff; }
+  color: #ffffff;
+  z-index: 1; }
 
 .top a {
   color: #ffffff;
   text-decoration: none; }
 
+/* ===================== *
+ * First Row
+ * ===================== */
 .display_img {
-  padding-top: 15px; }
+  padding-top: 15px;
+  padding-left: 55px;
+  margin-top: 20px;
+  margin-bottom: 50px; }
+
+/* ===================== *
+ * Colors Row
+ * ===================== */
+.colors {
+  background-color: #2980b9;
+  padding: 50px 0 100px 0; }
+
+.colors .color_items {
+  margin-top: 40px; }
+
+.colors_title {
+  font-family: "Roboto Light", Helvetia, Arial, sans-serif;
+  color: #ffffff; }
+
+.colors .color_items .color_label {
+  font: "Roboto Light", Helvetia, Arial, sans-serif;
+  color: #2c3e50;
+  line-height: 100%;
+  padding: 2px;
+  padding-top: 8px;
+  border-top: 1px solid #b5bfcc;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background-color: #dee2e8; }
+
+.colors .color_items .color_label span {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: bold; }
+
+.colors .color_items .cta_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #c03b2a; }
+
+.colors .color_items .background_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #ecf1f2; }
+
+.colors .color_items .ribbon_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #b5bfcc; }
+
+.colors .color_items .primary_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #2980b9; }
+
+.colors .color_items .secondary_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #3498db; }
+
+.colors .color_items .info_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #aedbf5; }
+
+.colors .color_items .nav_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #2c3e50; }
+
+.colors .color_items .subnav_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #1d2a35; }
+
+.colors .color_items .copy_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #2c3e50; }
+
+.colors .color_items .inverted_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #ffffff; }
+
+.colors .color_items .action_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #4eb96e; }
+
+.colors .color_items .rollover_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #3d5771; }
+
+.colors .color_items .flyout_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #5c6373; }
+
+.colors .color_items .icon_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #939da5; }
+
+.colors .color_items .graydarker_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #939da5; }
+
+.colors .color_items .graydark_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #b5bfcc; }
+
+.colors .color_items .gray_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #dee2e8; }
+
+.colors .color_items .graylight_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #ecf0f0; }
+
+.colors .color_items .graylighter_color {
+  height: 145px;
+  margin-top: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #f8f9fb; }
+
+/* ===================== *
+ * Typography Row
+ * ===================== */
+.type {
+  background-color: #f8f9fb;
+  padding: 50px 0 100px 0; }
+
+.type_bg {
+  background-color: #ecf0f0; }
+
+.type .type_items {
+  margin-top: 40px; }
+
+.type_title {
+  font-family: "Roboto Light", Helvetia, Arial, sans-serif;
+  color: #ffffff; }
+
+.type .type_items .type_label {
+  font: "Roboto Light", Helvetia, Arial, sans-serif;
+  color: #2c3e50;
+  line-height: 100%;
+  padding: 2px;
+  padding-top: 8px;
+  border-top: 1px solid #b5bfcc;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background-color: #dee2e8; }
+
+.type .type_items .type_label span {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: bold; }
